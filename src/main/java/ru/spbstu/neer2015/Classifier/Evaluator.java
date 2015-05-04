@@ -11,13 +11,13 @@ public class Evaluator {
     public void evaluate() throws Exception{
         double[] cParamGrid = getGrid(startC, stepC, endC);
         double[] kernelParamGrid = getGrid(startKernel, stepKernel, endKernel);
-        Classifier classifier = new Classifier();
         int cLen = cParamGrid.length;
         int kLen = kernelParamGrid.length;
         correct = 0;
         for (int i = 1; i < 4; i++) {
             for (int j = 0; j < cLen; j++) {
                 for (int k = 0; k < kLen; k++) {
+                    Classifier classifier = new Classifier();
                     classifier.buildClassifier(i, (int)cParamGrid[j], kernelParamGrid[k]);
                     double estimator = classifier.getEstimator();
                     if (estimator > correct){
@@ -26,9 +26,11 @@ public class Evaluator {
                         bestParam = kernelParamGrid[k];
                         bestC = cParamGrid[j];
                     }
+                    classifier.finalize();
                 }
             }
         }
+
     }
     public String getStringResults(){
         StringBuilder stringBuilder = new StringBuilder();

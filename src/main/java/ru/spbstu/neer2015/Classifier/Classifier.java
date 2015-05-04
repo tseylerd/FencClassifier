@@ -74,6 +74,9 @@ public class Classifier {
         writer.newLine();
         writer.close();
     }
+    public void finalize(){
+        train.delete();
+    }
     public static void main(String[] args) throws Exception{
         Generator generator = new Generator();
         generator.generateTrainSet();
