@@ -13,8 +13,8 @@ public class Setter {
     public final static String world = "world";
     public final static int dimensions = 9;
     public final static int numberBests = 6;
-    public final static double power = (1);
-    public final static int numberOfTrainingFolders = 7;
+    public final static double power = 1;
+    public final static int numberOfTrainingFolders = 10;
     public final static int competitionsNumber = 9;
     public final static int defaultsMax = 4;
     public final static int numberOfClasses = 10;
@@ -29,9 +29,15 @@ public class Setter {
     public final static boolean exponentClasses = true;
     public final static boolean bests = true;
     public final static int kernel = 1;
-    public static double placeToClass(double place){
+    public final static double startC = 1;
+    public final static double endC = 100;
+    public final static double stepC = 1;
+    public final static double startKernel = -10;
+    public final static double endKernel = 10;
+    public final static double stepKernel = 0.1;
+    public static double placeToClass(final double place){
         if (sayThatGood){
-            if (place <= 16){
+            if (place < 17){
                 return 0;
             }else {
                 return 1;
@@ -58,11 +64,23 @@ public class Setter {
             return result;
         }
     }
-    public static Kernel getKernel(){
+    public static Kernel getKernel(int type, double param){
         switch (kernel){
-            case 1: return new PolyKernel();
-            case 2: return new NormalizedPolyKernel();
-            case 3: return new RBFKernel();
+            case 1: {
+                PolyKernel polyKernel = new PolyKernel();
+                polyKernel.setExponent(param);
+                return polyKernel;
+            }
+            case 2: {
+                NormalizedPolyKernel normalizedPolyKernel = new NormalizedPolyKernel();
+                normalizedPolyKernel.setExponent(param);
+                return normalizedPolyKernel;
+            }
+            case 3: {
+                RBFKernel rbfKernel = new RBFKernel();
+                rbfKernel.setGamma(param);
+                return rbfKernel;
+            }
             default: return new PolyKernel();
         }
     }

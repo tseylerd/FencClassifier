@@ -4,6 +4,9 @@ import ru.spbstu.neer2015.Data.Setter;
 import ru.spbstu.neer2015.Data.Generator;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
+import weka.classifiers.functions.supportVector.Kernel;
+import weka.classifiers.functions.supportVector.NormalizedPolyKernel;
+import weka.classifiers.functions.supportVector.PolyKernel;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.Instances;
 import weka.filters.Filter;
@@ -31,21 +34,29 @@ public class Classifier {
         train.setClassIndex(train.numAttributes()-1);
         classifier = new FilteredClassifier();
     }
-    public void buildClassifier() throws Exception{
+    public void buildClassifier(final int kernelType, final int c, double param) throws Exception{
         SMO smo = new SMO();
-        smo.setKernel(getKernel());
+        Kernel kernel1 = getKernel(kernelType, param);
+        smo.setKernel(kernel1);
+        smo.setC(c);
         Remove remove = new Remove();
         remove.setAttributeIndices("1");
         classifier.setFilter(remove);
         classifier.setClassifier(smo);
         classifier.buildClassifier(train);
     }
+
     public void crossValidateToConsole() throws Exception{
         Evaluation evaluation = new Evaluation(train);
         evaluation.crossValidateModel(classifier, train, 10, new Random(1));
         System.out.println(evaluation.toSummaryString());
     }
-    public void classifyAllFromFile(String path) throws Exception{
+    public double getEstimator() throws Exception{
+        Evaluation evaluation = new Evaluation(train);
+        evaluation.crossValidateModel(classifier, train, 10, new Random(1));
+        return evaluation.pctCorrect();
+    }
+    public void classifyAllFromFile(final String path) throws Exception{
         Instances unlabeled = new Instances(
                 new BufferedReader(
                         new FileReader(path)));
@@ -68,7 +79,7 @@ public class Classifier {
         generator.generateTrainSet();
         generator.saveTrainSetToFile();
         Classifier classifier1 = new Classifier();
-        classifier1.buildClassifier();
-        classifier1.crossValidateToConsole();
+        classifier1.buildClassifier(kernel, 10, 1);
+        System.out.print(classifier1.getEstimator());
     }
 }

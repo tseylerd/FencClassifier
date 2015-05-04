@@ -38,6 +38,9 @@ public class Sportsmen {
             results[j] /= sum;
         }
     }
+    public boolean ifFull(){
+        return i == dimensions;
+    }
     public void compareAndChangeClass(double place){
         if (this.place != place){
             this.place = -1;
@@ -70,8 +73,12 @@ public class Sportsmen {
         this.place = place;
     }
     public void pushResult(double result){
-        results[i] += result;
-        i++;
+        try {
+            results[i] = result;
+            i++;
+        }catch (Exception e){
+            System.out.print(name);
+        }
     }
     public void setResults(){
         results[0] /= dimensions;
@@ -145,7 +152,7 @@ public class Sportsmen {
                 result += Integer.toString((int)Math.pow(results[j], power)) + ",";
             }
         }
-        result += Integer.toString((int)place);
+        result += Integer.toString(place);
         return result;
     }
 }

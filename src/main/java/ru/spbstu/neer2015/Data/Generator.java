@@ -43,7 +43,7 @@ public class Generator {
         return sportsmens;
     }
 
-    private ArrayList<Sportsmen> getFilteredSet(double filteredClass){
+    private ArrayList<Sportsmen> getFilteredSet(final double filteredClass){
         ArrayList<Sportsmen> filteredSet = new ArrayList<Sportsmen>();
         for(Sportsmen sportsmen : sportsmens){
             filteredSet.add(new Sportsmen(sportsmen));
@@ -83,7 +83,7 @@ public class Generator {
         }
         bufferedWriter.close();
     }
-    private int getYearsOld(String date){
+    private int getYearsOld(final String date){
         if (yearsOld){
             int day = Integer.parseInt(date.substring(0, 2));
             int month = Integer.parseInt(date.substring(3, 5));
@@ -96,21 +96,22 @@ public class Generator {
             return defaultYears;
         }
     }
-    private void extractFromFolder(String folder) throws FileNotFoundException, ParseException{
+    private void extractFromFolder(final String folder) throws FileNotFoundException, ParseException{
         String pathToFolder = pathToResults + folder;
         Scanner scanner = new Scanner(new FileReader(pathToFolder+world));
         HashMap<String, Sportsmen> hashMap = new HashMap<String, Sportsmen>();
         int k = 0;
         while (scanner.hasNext()){
             String[] line = scanner.nextLine().split("\t");
-            String name = line[2]+folder;
+
             double place = Integer.parseInt(line[0]);
+            //+Double.toString(place);
             String date = line[4];
+            String name = line[2] + date;
             Sportsmen sportsmen = new Sportsmen(name, (int)placeToClass(place));
             sportsmen.setYearsOld(getYearsOld(date));
             hashMap.put(name, sportsmen);
         }
-        System.out.println();
         for (int i = 1; i < competitionsNumber; i++) {
             addResults(hashMap, pathToFolder+Integer.toString(i), folder);
         }
@@ -118,19 +119,21 @@ public class Generator {
             sportsmens.add(sportsmen);
         }
     }
-    private void addResults(HashMap<String, Sportsmen> hashMap, String path, String folder) throws FileNotFoundException{
+    private void addResults(final HashMap<String, Sportsmen> hashMap, final String path, final String folder) throws FileNotFoundException{
         Scanner scanner = new Scanner(new FileReader(path));
         HashSet<String> hashSet = new HashSet<String>();
         while (scanner.hasNext()){
             String[] line = scanner.nextLine().split("\t");
-            String name = line[2] + folder;
+            String date = line[4];
+            String name = line[2] + date;
             if (hashMap.containsKey(name)){
                 double place = Integer.parseInt(line[0]);
-                hashMap.get(name).pushResult(place);
-                hashSet.add(name);
+                if (!hashMap.get(name).ifFull()) {
+                        hashMap.get(name).pushResult(place);
+                        hashSet.add(name);
+                }
             }
         }
-        HashSet<Sportsmen> bad = new HashSet<Sportsmen>();
         for (Sportsmen sportsmen : hashMap.values()){
             if (!hashSet.contains(sportsmen.getName())){
                 sportsmen.pushResult(defaultResult);
