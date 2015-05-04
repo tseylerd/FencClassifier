@@ -1,8 +1,5 @@
 package ru.spbstu.neer2015.Data;
 
-/**
- * Created by tseyler on 11.03.15.
- */
 import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -13,9 +10,6 @@ import java.util.Scanner;
 
 import static ru.spbstu.neer2015.Data.Setter.*;
 
-/**
- * Created by tseyler on 30.01.15.
- */
 public class Generator {
     private ArrayList<Sportsmen> sportsmens;
     public void saveTrainSetToFile() throws IOException{

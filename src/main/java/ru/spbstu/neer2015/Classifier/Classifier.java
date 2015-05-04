@@ -5,8 +5,6 @@ import ru.spbstu.neer2015.Data.Generator;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.functions.supportVector.Kernel;
-import weka.classifiers.functions.supportVector.NormalizedPolyKernel;
-import weka.classifiers.functions.supportVector.PolyKernel;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.Instances;
 import weka.filters.Filter;

@@ -30,11 +30,11 @@ public class Setter {
     public final static boolean bests = true;
     public final static int kernel = 1;
     public final static double startC = 1;
-    public final static double endC = 10;
+    public final static double endC = 100;
     public final static double stepC = 1;
     public final static double startKernel = 1;
-    public final static double endKernel = 10;
-    public final static double stepKernel = 1;
+    public final static double endKernel = 4;
+    public final static double stepKernel = 0.1;
     public static double placeToClass(final double place){
         if (sayThatGood){
             if (place < 17){

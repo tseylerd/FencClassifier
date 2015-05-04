@@ -1,8 +1,6 @@
 package ru.spbstu.neer2015.Classifier;
 import static ru.spbstu.neer2015.Data.Setter.*;
-/**
- * Created by tseyler on 04.05.15.
- */
+
 public class Evaluator {
     private int bestKernel;
     private double bestParam;

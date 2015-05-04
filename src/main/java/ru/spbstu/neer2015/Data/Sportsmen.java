@@ -3,9 +3,7 @@ package ru.spbstu.neer2015.Data;
 import java.util.Arrays;
 
 import static ru.spbstu.neer2015.Data.Setter.*;
-/**
- * Created by tseyler on 30.01.15.
- */
+
 public class Sportsmen {
     private String name;
     private double[] results;
