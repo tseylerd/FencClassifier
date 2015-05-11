@@ -14,12 +14,25 @@ import static ru.spbstu.neer2015.data.Setter.rating;
 public class Generator {
     private ArrayList<Sportsmen> sportsmens;
     private HashMap<String, Double> counties;
+    private HashMap<String, Integer> hands;
     public Generator() throws IOException{
         counties = new HashMap<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(countiesPath));
         String country;
         while ((country = bufferedReader.readLine())!=null){
             counties.put(country, (double)country.hashCode());
+        }
+        bufferedReader.close();
+        if (addHand) {
+            bufferedReader = new BufferedReader(new FileReader(pathToHands));
+            String line;
+            hands = new HashMap<>();
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] arr = line.split("\t");
+                String name = arr[0];
+                int hand = Integer.parseInt(arr[1]);
+                hands.put(name, hand);
+            }
         }
     }
     private void filterSet(){
@@ -34,7 +47,7 @@ public class Generator {
         }
     }
     public void generateTrainSet() throws IOException, ParseException{
-        sportsmens = new ArrayList<Sportsmen>();
+        sportsmens = new ArrayList<>();
         for (int i = 1; i < numberOfTrainingFolders; i++) {
             extractFromFolder(Integer.toString(i) + "/");
         }
@@ -62,10 +75,11 @@ public class Generator {
             bufferedWriter.write("@attribute " + i + " numeric\n");
         }
         bufferedWriter.write("@attribute Class {");
-        for (int i = 0; i < classesNumber; i++) {
+        int classes = getClassesNumber();
+        for (int i = 1; i < classes; i++) {
             bufferedWriter.write(Integer.toString(i)+",");
         }
-        bufferedWriter.write(Integer.toString(classesNumber)+"}\n" + "\n");
+        bufferedWriter.write(Integer.toString(classes)+"}\n" + "\n");
         bufferedWriter.write("@data\n");
     }
     private int getLastAttribute(){
@@ -79,6 +93,12 @@ public class Generator {
             result++;
         }
         if (addRating){
+            result++;
+        }
+        if (addHand){
+            result++;
+        }
+        if (addCountryRating){
             result++;
         }
         return result;
@@ -126,6 +146,18 @@ public class Generator {
         }
         return result;
     }
+    private HashMap<String, Integer> getTeamRating(final String path) throws IOException{
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        String s;
+        HashMap<String, Integer> result = new HashMap<>();
+        while ((s = bufferedReader.readLine()) != null){
+            String[] arr = s.split("\t");
+            int pos = Integer.parseInt(arr[0]);
+            String country = arr[2];
+            result.put(country, pos);
+        }
+        return result;
+    }
     private void addFinalRating(Sportsmen sportsmen, HashMap<String, Integer> rat){
         if (addRating){
             Integer pos = rat.get(sportsmen.getName());
@@ -136,11 +168,30 @@ public class Generator {
             sportsmen.setRating(pos);
         }
     }
+    private void addTeamRating(Sportsmen sportsmen, String country, HashMap<String, Integer> rat){
+        if (addCountryRating){
+            Integer pos = rat.get(country);
+            if (pos == null){
+                pos = sportsmen.getPlace();
+            }
+            sportsmen.setCountryRating(pos);
+        }
+    }
+    private void addHand(Sportsmen sportsmen){
+        if (addHand){
+            Integer hand = hands.get(sportsmen.getName());
+            if (hand == null){
+                hand = 5000;
+            }
+            sportsmen.setHand(hand);
+        }
+    }
     private void extractFromFolder(final String folder) throws ParseException, IOException{
         String pathToFolder = pathToResults + folder;
         Scanner scanner = new Scanner(new FileReader(pathToFolder+world));
         HashMap<String, Sportsmen> hashMap = new HashMap<>();
         HashMap<String, Integer> rat = getRating(pathToFolder + rating);
+        HashMap<String, Integer> teamRat = getTeamRating(pathToFolder + teamRating);
         while (scanner.hasNext()){
             String[] line = scanner.nextLine().split("\t");
             double place = Integer.parseInt(line[0]);
@@ -150,6 +201,8 @@ public class Generator {
             Sportsmen sportsmen = new Sportsmen(name, (int)placeToClass(place), getNumberOfCountry(country));
             sportsmen.setYearsOld(getYearsOld(date));
             addFinalRating(sportsmen, rat);
+            addHand(sportsmen);
+            addTeamRating(sportsmen, country, teamRat);
             hashMap.put(name, sportsmen);
         }
         for (int i = 1; i < competitionsNumber; i++) {

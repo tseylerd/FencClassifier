@@ -11,12 +11,22 @@ public class Sportsmen {
     private int place;
     private double country;
     private int rating;
+    private int hand;
+    private int countryRating;
     public Sportsmen(String name, int place, double country){
         this.name = name;
         this.results = new double[dimensions];
         i = 0;
         this.place = place;
         this.country = country;
+    }
+
+    public void setCountryRating(int countryRating) {
+        this.countryRating = countryRating;
+    }
+
+    public void setHand(int hand){
+        this.hand = hand;
     }
     public void setRating(int pos){
         this.rating = pos;
@@ -121,24 +131,24 @@ public class Sportsmen {
             sum /= (dimensions-1);
             if (placeToClass(sum) > place) {
                 return false;
-            } else {
-                return defaultsNumber() <= defaultsMax && place < filteredPlace;
             }
-        }else {
-            return defaultsNumber() <= defaultsMax;
         }
+        return defaultsNumber() <= defaultsMax;
     }
-
-    public String getText(){
-        doThatResultsAreTrue();
-        String result = "";
-        result += "'" + name + "',";
+    private double getMean(){
         double mid = 0;
         for (int j = 1; j < numberBests+1; j++) {
             mid += results[j];
         }
+        mid = Math.pow(mid/numberBests, power);
+        return mid;
+    }
+    public String getText(){
+        doThatResultsAreTrue();
+        String result = "";
+        result += "'" + name + "',";
         if (mean){
-            mid = Math.pow(mid/numberBests, power);
+            double mid = getMean();
             result += Double.toString(results[0]);
             result+= ",";
             result += Double.toString(mid);
@@ -158,6 +168,12 @@ public class Sportsmen {
         }
         if (addRating) {
             result += Integer.toString(rating) + ",";
+        }
+        if (addHand) {
+            result += Integer.toString(hand) + ",";
+        }
+        if (addCountryRating) {
+            result += Integer.toString(countryRating) + ",";
         }
         result += Integer.toString(place);
         return result;

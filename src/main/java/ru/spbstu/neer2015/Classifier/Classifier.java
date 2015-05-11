@@ -84,7 +84,7 @@ public class Classifier {
         generator.generateTrainSet();
         generator.saveSportsmens();
         Classifier classifier1 = new Classifier();
-        classifier1.buildClassifier(4, 10000, 0.01);
+        classifier1.buildClassifier(1, 36, 14);
         classifier1.crossValidateToConsole();
     }
 }

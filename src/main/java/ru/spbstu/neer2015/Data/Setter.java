@@ -8,11 +8,14 @@ import weka.classifiers.functions.supportVector.RBFKernel;
 public class Setter {
     public final static boolean yearsOld = true;
     public final static boolean addCountry = true;
+    public final static boolean addCountryRating = true;
     public final static boolean addRating = true;
     public final static int defaultYears = -1;
     public final static String pathToResults = "ForLearn/";
     public final static String pathToTrainSet = "ForLearn/Result/train";
+    public final static String pathToHands = "Data/hands";
     public final static String rating = "rating";
+    public final static String teamRating = "teamRating";
     public final static String world = "world";
     public final static int dimensions = 9;
     public final static int numberBests = 8;
@@ -20,18 +23,15 @@ public class Setter {
     public final static int numberOfTrainingFolders = 10;
     public final static int competitionsNumber = 9;
     public final static int defaultsMax = 4;
-    public final static int numberOfClasses = 10;
     public final static double defaultResult = -1;
-    public final static int filteredPlace = 9;
     public final static boolean normalize = true;
     public final static boolean sayThatGood = false;
-    public final static int classesNumber = 9;
-    public final static int maxPasses = 100;
+    public final static int maxClasses = 50;
     public final static boolean mean = true;
     public final static boolean filterSmaller = true;
     public final static boolean exponentClasses = true;
     public final static boolean bests = true;
-    public final static int kernel = 1;
+    public final static boolean addHand = false;
     public final static double startC = 1;
     public final static double endC = 100;
     public final static double stepC = 1;
@@ -39,12 +39,22 @@ public class Setter {
     public final static double endKernel = 4;
     public final static double stepKernel = 0.1;
     public final static String countiesPath = "data/countries.txt";
+    public static int getClassesNumber(){
+        if (exponentClasses){
+            return 5;
+        }
+        if (sayThatGood){
+            return 2;
+        }else {
+            return 50;
+        }
+    }
     public static double placeToClass(final double place){
         if (sayThatGood){
             if (place < 17){
-                return 0;
-            }else {
                 return 1;
+            }else {
+                return 2;
             }
         }
         if (exponentClasses) {
@@ -63,8 +73,8 @@ public class Setter {
             return 5;
         }else {
             double result = (int)place/4;
-            if (result > classesNumber)
-                result = classesNumber;
+            if (result > maxClasses)
+                result = maxClasses;
             return result;
         }
     }
