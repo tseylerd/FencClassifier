@@ -1,0 +1,380 @@
+1	ERRIGO Arianna	ITA	48	(20)	32	(4)	(20)	39	32		48		21			80	300
+2	DI FRANCISCA Elisa	ITA	21	(4)	26	26	26	(12)	(2)		30		48			35	212
+3	BATINI Martina	ITA	12	8	(8)	32	(8)	30	(8)		12		39			65	198
+4	VEZZALI Valentina	ITA	12	8	(2)	(4)	14	48	(4)		21		30			50	183
+5	BOUBAKRI Ines	TUN	12	(4)	14	20	(2)	21	4					48		50	169
+6	DERIGLAZOVA Inna	RUS	21	(14)	(20)	(2)	32	21	26		39		12			10	161
+7	KIEFER Lee	USA	3	14		14		3			12	48				35	129
+8	JEON Hee Sook	KOR	12	14	(2)	20	(2)	(12)	20		12				39	10	127
+9	KOROBEYNIKOVA Larisa	RUS	30	(4)	8	8	(4)	(6)	8		21		21			20	116
+10	PRESCOD Nzingha	USA	39			(4)	14	12	4		6	30				10	115
+11	LE Huilin	CHN	30	8		2	(2)	6	8						30	20	104
+12	BIRYUKOVA Yulia	RUS	6	(4)	20	4	8	(3)	14		(3)		30			20	102
+13	THIBUS Ysaora	FRA	(3)	(4)	8	(4)	8	21	20		12		12			20	101
+14	NAM Hyun Hee	KOR	3	20	(2)	2	(2)	6	14						48	5	98
+15	OH Ha Na	KOR	6	8	(4)	(4)	(4)	21	8		6				21	20	90
+16	GOLUBYTSKYI Carolin	GER	21	(2)	8	8	8	(6)	8		(6)		21			5	79
+17	GUYART Astrid	FRA	21	8	14	(2)	8	(6)	(2)		6		12			10	79
+18	KIM Mina	KOR	6	4	4	(2)	(2)	12	14						12	20	72
+19	LELEYKO Olga A.	UKR		2	4	14	4				6		6			35	71
+20	MAITREJEAN Corinne	FRA	6	14	(4)	8	8	12	(4)		(3)		12			10	70
+21	YAKOVLEVA Diana	RUS		4	14	(2)	(2)	6	8		21		6			10	69
+22	LIU Yongshi	CHN	12	2		(2)	14	6	2						21	10	67
+23	WAECHTER Katja	GER	6	4	14	(0)	8	6	(2)				6			20	64
+24	CHEN Bingbing	CHN	3	(0)		8	4	3	4						30	10	62
+25	ROSS Nicole	USA	6	2		(0)	8	6	(2)		6	21				10	59
+26	SAUER Anne	GER	3	(2)	(2)	4	(2)	3	4		3		21			20	58
+27	ERBA Carolina	ITA	(3)	8	4	8	(2)	6	(2)		30						56
+28	VOLPI Alice	ITA	(3)	26	8	14	(2)	(3)	4		3						55
+29	RYAN Kelleigh	CAN	0	0	4	(0)	0		0			39				10	53
+30	NISHIOKA Shiho	JPN		8	(2)	2	4	6			6				21	5	52
+31	KNOP Magdalena	POL	3	2	2	4	(0)				6					35	52
+32	GEBET Gaelle	FRA	3	(2)	8	(0)	(2)	3	14		12		6			5	51
+33	SHAABAN Eman	EGY	3			0					3			39		5	50
+34	WANG Chen	CHN	12	2		(0)	4	3	4						12	10	47
+35	IVANOVA Anastasia	RUS	(3)	4	(2)	(4)	20	6	4		12						46
+36	CHLEWINSKA Karolina	POL	12	(2)	4	2	4		(2)		12		6			5	45
+37	CIPRIANI Valentina	ITA	(0)	32	2	2	2	(0)	(2)		6						44
+38	KNAPEK Edina	HUN	3	(2)	(2)	8	2		8		6		12			5	44
+39	LU Margaret	USA	3			8	4		2		3	12				10	42
+40	SYNORADZKA Martyna	POL	6	(2)	4	(4)	4		4		12		6			5	41
+41	BINGENHEIMER Sandra	GER	3	(0)	4	(0)	(0)	6	2		6		12			5	38
+42	ROCHEL Tais	BRA	3	(0)			(0)	0	2	3	3	21				5	37
+43	VARGA Gabriella	HUN	6	4	2	(2)	4		(2)		3		6			10	35
+44	SHEPPARD Natalia	GBR	3	(2)	4	(0)	(0)	3	4		3		6			10	33
+45	VAN ERVEN GARCIA Saskia Loretta	COL										21				10	31
+46	SENYUTA Alexandra	UKR		2	2	2	2				6		12			5	31
+47	GIMENEZ Isis	VEN										30				0	30
+48	KHELFAOUI Anissa	ALG									0			30		0	30
+49	JUNG Gil Ok	KOR						30									30
+49	NOUR Amena	EGY												30			30
+51	DURANDO Benedetta	ITA	6	4	(2)	4	4	12	(2)								30
+52	YANAOKA Haruka	JPN		0				3	0						21	5	29
+53	ZAGIDULLINA Adelina	RUS	6	(2)	8	4	(2)	(3)	4		6						28
+54	BLAZE Anita	FRA	3	(0)	2	14	2	6	(0)								27
+55	HONG Seo In	KOR	12	(2)	2	2	(2)	3	8								27
+56	PIRIEVA Leyla	RUS	6	(0)	4	2	(2)	12	(0)		3						27
+57	WOJTKOWIAK Malgorzata	POL	6	2	4	(0)	4		(0)		6					5	27
+58	MICHEL Nataly	MEX	0	0		0	0				0	21				5	26
+59	LIM Seung Min	KOR						3	2		21						26
+60	CINI Chiara	ITA		4	2	2	14				3						25
+61	GOLDIE Alanna	CAN		2				3	2			12				5	24
+62	MIYAWAKI Karin	JPN						0	2						12	10	24
+63	MYASNIKOVA Tatiana	RUS	6	8	2	(0)	4	3	(2)								23
+64	RANVIER Pauline	FRA		4			2	12	2		3						23
+65	KHELFAOUI Louiza	ALG									0			21			21
+66	ZERABIB Khadidja	ALG									0			21			21
+67	YASSER Aida	EGY												21			21
+68	EL HOUARI Narimene	ALG									0			21			21
+69	JESZENSZKY Szilvia	HUN		4	0	(0)	0		0		6		6			5	21
+70	COMERFORD Shannon	CAN		(0)	0	0	0	3	0			12				5	20
+71	JANG Yeaseul	KOR	6	(2)	4	(2)	4	3	(2)		3						20
+72	HARVEY Eleanor	CAN		0				6	2			6				5	19
+73	HUIN Julie	FRA	6	(0)	(2)	2	2	6	(2)		3						19
+74	CAMACHO Adriana	MEX				0					0	12				5	17
+75	SUAREZ Yulitza	VEN										12				5	17
+76	DAFFNER Mariana	BRA										12				5	17
+77	MORMANDI Flavia Johana	ARG	3	0							3	6				5	17
+78	LYCZBINSKA Hanna	POL	3	0	4	2	0				(0)		6				15
+79	HAMPEL Eva	GER	(0)	2	(2)	4	2		4		3						15
+80	LYCZBINSKA Marta	POL	0	0	2	0	0						12				14
+81	LIN Po Heung	HKG			2										12		14
+82	KUSANO Hiromi	JPN		0	0	0	(0)	0	2						12		14
+83	KREISS Fanny	HUN		0			0				3		6			5	14
+84	CHENTSOVA Kateryna	UKR		0	2	0	0				0		6			5	13
+85	VARGA Katalin	HUN	3	(2)	2	4	2		2								13
+86	BULCAO Ana Beatriz	BRA								4	3					5	12
+87	WONG Cheryl Ye Han	SIN				0	0	0	0	1					6	5	12
+88	CHEUNG Kimberley Vanessa	HKG			0				0						12	0	12
+89	ATIF Hanane	MAR												12			12
+90	SILVA Paula	CHI		0	0							12				0	12
+91	VICATOS Giselle	RSA												12		0	12
+92	CECCHINI Gabriela	BRA		0								12					12
+93	ABU BAKAR Natasha Ezzra	MAS						0	0						12	0	12
+94	MONACO Beatrice	ITA		2	0	8	2										12
+95	LE Thi Bich	VIE													12		12
+96	JELINSKA Martyna	POL	3	2	0	4	(0)		(0)		3						12
+97	DLUGOSZ Martyna	POL	6			0					6						12
+98	UNN TOC Andrea	FRA	3	2	(0)	2	(0)		2		3						12
+99	WANG Wenying	SIN													6	5	11
+100	LIU Yan Wai	HKG			0	0	0		0						6	5	11
+101	RIVERO Liz	VEN										6				5	11
+102	CHANTASUVANNASIN Nunta	THA													6	5	11
+103	SOKOLOVSKAJA Margarita	AUS													6	5	11
+104	RASHIDOVA Yulia	RUS		2	8				0								10
+105	WONG Liane Ye Ying	SIN								2					6		8
+106	CALISSI Olga Rachele	ITA		0	2	4	2										8
+107	MASSIALAS Sabrina	USA	0	2	2	(0)	0		4								8
+108	CAMMILLETTI Marta	ITA			4	2	2		0								8
+109	HONG Hyo Jin	KOR	3	2	0	(0)	0	3									8
+110	TRAN Flora	FRA			0	0	0		4		3						7
+111	NOVALIN'SKA Kristina	RUS	3	0	4												7
+112	MIENVILLE Julie	FRA		0			2	3	2		0						7
+113	WONG Nicole Mae Hui Shan	SIN								0					6		6
+114	PARRILLA Luisa M.	PUR										6					6
+115	CAMOZZATO Nicole	BRA										6					6
+116	ZAYAS Aslyn	PUR				0	0					6					6
+117	ZIYAEVA Gulymira	UZB													6	0	6
+118	RIVERO Emiliana	VEN										6				0	6
+119	TINIO Justine Gail	PHI													6		6
+120	REBOLLEDO Melissa	MEX	0	0			0				0	6				0	6
+121	HO Peng I	MAC													6		6
+121	NGUYEN Thi Tuoi	VIE													6		6
+123	CELLEROVA Michala	SVK									0		6				6
+124	DOIG Maria Luisa	PER										6					6
+125	STRANIERO Stefania	ITA					2		4								6
+126	ROMANUS Stephanie	GER	0	4	0	2	(0)				0						6
+127	CHENG Hiu Lam	HKG													6		6
+127	LOPEZ Ana Luisa	GUA										6					6
+129	HUANG Liya	MAC													6		6
+129	RODRIGUEZ Tulasi	GUA										6					6
+131	RIVERA ROID Melanie	PUR				0	0					6					6
+132	HO Ka U	MAC													6		6
+133	RYGIELSKA Emilia	POL	0	4	0	2	0										6
+134	DEORDIEVA Kateryna	UKR		0	0								6				6
+135	BOLDOR Maria	ROU		0									6				6
+136	CHEN Wan Yu	TPE													6		6
+137	STAN Isabelle	ROU		0									6				6
+138	LOZADA Wilhelmina	PHI													6		6
+139	MATSUMOTO Iyo	JPN		0				3			3						6
+140	ELESINA Irina	RUS		2	2	2	0		0								6
+141	KWON Saemi	KOR	3	0	0	0	(0)	3									6
+142	SHI Yun	CHN	3	2					0								5
+143	OH Hye Mi	KOR						0	2		3						5
+144	FENG Yumei	CHN	3	2				0	0								5
+145	LUPKOVICS Dora	HUN	0	(0)	0	2	0				3						5
+146	PALISZEWSKA Monika	POL	3	(0)	0	0	0		2								5
+147	BIMOVA Andrea	CZE		0		0										5	5
+148	GOLYA Fruzsina	HUN	3	2		0					0						5
+149	MANA Marie	FRA			2	0					3						5
+150	GROSLAMBERT Delphine	BEL	0	(0)		0	0			1	3		0				4
+151	VARDARO Elisa	ITA					4										4
+152	CIPRESSA Erica	ITA					4										4
+153	SCHMITZ Franziska	GER			2	2	0				0						4
+154	BEHR Kristin	GER		(0)	2	2	0		0		0						4
+155	ALEXEEVA Viktoria	RUS				2			2								4
+156	ESTEBAN Maxine Isabel	PHI													3		3
+157	KARIMOVA Karolina	KAZ													3		3
+158	MPAH-NJANGA Jeromine	FRA		0			0		0		3						3
+159	KARAMETE Irem	TUR		0	0		0	3					0			0	3
+160	SOBCZAK Zuzanna	POL						3	0								3
+161	GOLEBIOWSKA Natalia	POL	3						0								3
+162	DOBBS Olivia	USA									3						3
+163	RYBICKA Anna	POL	3														3
+164	PARK Mihyun	KOR						3									3
+165	CHRZANOWSKA Marika	POL	3			0											3
+166	HUO Xingxin	CHN				0	0	3	0								3
+167	RANCUREL Maeva	FRA			0	0					3						3
+168	JUBENOT Chloe	FRA		0			0		0		3						3
+169	ROUAS Maud	FRA		0	0	0					3						3
+170	ZEISS Madison	USA	0			0					3						3
+171	SCHREIBER Ester	SWE								2							2
+172	PALUMBO Francesca	ITA					2		0								2
+173	DUBROVICH Jacqueline	USA			2												2
+174	SHEN Yinshuang	CHN							2								2
+175	MELENTIEVA Anastasia	RUS			2												2
+176	YIN Zhu	CHN	0	2					0								2
+177	MANCINI Camilla	ITA					0		2								2
+178	ALBOROVA Yana	RUS				0	2										2
+179	WOHLGEMUTH Olivia	AUT	0	0	0	2	0										2
+180	ZACKE Martina	GER				2											2
+181	ZHANG Yixin	CHN				2	0		0								2
+182	CARACCIOLO Claudia	ITA					2										2
+183	SHI Yanan	CHN	0	0					2								2
+184	HERNANDEZ Alely	MEX	0	2		0	0										2
+185	ARDENTOVA Natalya	RUS			2												2
+186	PETROVA Ekaterina	RUS			2												2
+187	GONG Yu	CHN							2								2
+188	MOSKOVSKA Anastasiya	UKR		0	0	2	0										2
+189	DE COSTANZO Valentina	ITA					2										2
+190	SAMSONOVA Kristina	RUS				0	2										2
+191	WADA Naoko	JPN			0	2	0										2
+192	TAGLIAPIETRA Maddalena	ITA					2										2
+193	CIVIERO Ambre	SUI	0							1							1
+194	FINTER Rose	CAN				0				1	0						1
+195	LOFMARK Linn	SWE								0							0
+196	MOHAMED Noura	EGY												0			0
+196	CLARKE Ruth	GBR								0							0
+196	RUNDQUIST Harriet	SWE								0							0
+199	SABALY Salimata D	SEN												0			0
+200	ENRIGHT Irene	FIN				0				0	0		0				0
+201	AGRELLA Susan	RSA												0		0	0
+202	UUSITALO Noora	FIN								0							0
+203	PAVLINOVA Irina	KAZ			0					0					0		0
+204	VALERO-COLLANTES Cristina	SWE								0							0
+205	GOTHBERG VON TROIL Gabrielle	SWE		0						0							0
+206	JENSEN Lene	DEN								0							0
+207	EIERMANN Birgit	GER								0							0
+208	PALLESEN Kirsten Siig	DEN								0							0
+209	LAWTON Josefina	DEN								0							0
+210	POIL Georgia	GBR								0							0
+211	RAUSCHNING Nicole	GER								0							0
+212	SEGALL Grace	GBR								0							0
+213	SPANGER-RIES Martine	DEN								0							0
+214	KOROLEVA Olga	KAZ			0					0							0
+215	BELL Karen	DEN		0		0				0			0			0	0
+216	CHURCH Amy	GBR								0							0
+217	ESCOBAR ZAPATA Paula Andrea	COL										0					0
+217	ROUSU Petra	FIN								0							0
+219	SEGALL Emma-Tina	GBR								0							0
+219	RAUDASKOSKI Outi	FIN								0							0
+219	VELASQUEZ AGUDELO Juliana	COL										0					0
+222	ARGUETA GONZALEZ Ana Clelia	ESA										0					0
+223	BALLE Susie Agerholm	DEN								0							0
+223	SAPENA Macarena	PAR										0					0
+225	CALUGAREANU Malina	ROU		0									0				0
+226	LIMA Tabata	BRA	0			0	0			0							0
+227	ALANKO Reeta	FIN								0							0
+227	CARBALLO BARRERA Ivania Carolina	ESA										0					0
+229	ZAMLIN Bella	ISR											0				0
+229	QUESADA BARRANTES Veronica	CRC										0					0
+231	SEIDAKHMETOVA Kuralay	KAZ													0		0
+231	VALLE ARANA Alejandra Guadalupe	ESA										0					0
+233	BUDNIAK Jacqueline	AUS													0	0	0
+234	VILLALOBOS ABRAHAMS Dione	CRC										0					0
+235	GARITA CAMBRONERO Madelaine	CRC										0					0
+235	DANIEL Claire	AUS													0		0
+237	DABROCK Oxana	MDA				0							0				0
+238	KWAG Alicia Ji Yeon	AUS													0		0
+238	BOLDOR Ana	ROU											0				0
+238	DORCAS Sofia	ARU										0					0
+241	DO Thi Anh	VIE													0		0
+242	PURNAMAWATI Herlin Erviana	INA													0		0
+243	ZAHRINA Atikah	INA													0		0
+243	MANSUR Ayu Miftahul Jannah	INA													0		0
+245	SEO Mi Jung	KOR						0									0
+246	KANO Minami	JPN		0				0	0							0	0
+247	JEONG Ji Seong	KOR						0			0						0
+248	WALCZYK Julia	POL	0						0		0						0
+249	SANADA Rena	JPN		0				0	0								0
+250	OJEDA Barbara	ESP					0				0						0
+251	GU Wenqian	CHN						0	0								0
+252	LEE Han Na	KOR						0									0
+253	ORSOLINI Ilenia	ITA					0										0
+254	ITO Maki	JPN		0				0	0								0
+255	RASHIDOVA Alime	RUS		0	0												0
+256	YUAN Ping	NZL														0	0
+256	KAUSHAL Sonalika	IND						0									0
+258	SHYPILOVA Olena	UKR														0	0
+259	SZALAI Szonja	HUN		0		0											0
+260	ASANO Saki	JPN				0	0										0
+261	MAREY Julie	FRA									0						0
+261	WYLIE Stephanie	NZL														0	0
+263	TRIPAPINA Svetlana	RUS					0		0								0
+264	KAWAMURA Risa	JPN				0	0										0
+265	WU Ling	CHN							0								0
+266	BONNEY-MILLETT Jenny	AUS														0	0
+266	SHANAEVA Aida	RUS									0						0
+268	SIBERT Catriona	GBR	0	0	0						0						0
+269	MANSUR Fernanda	BRA														0	0
+270	COOK Catherine	GBR	0	0	(0)	0	0				0						0
+271	CHENG Hiu Wai Valerie	HKG			0				0							0	0
+272	FUKUDA Yuka	JPN							0								0
+273	BEHR Leandra	GER	0														0
+273	GOLOSEEVA Tatiana	RUS			0												0
+273	BROT Coralie	FRA									0						0
+276	SZYMCZAK Anna	POL	0														0
+277	OISHI Kanna	JPN		0	0	0	0		0								0
+278	NEHL Inke	GER	0		0	0											0
+279	TCHOUKOUNTE Madina	FRA									0						0
+279	SO Yin Ting	HKG														0	0
+279	CAI Yuanting	CHN							0								0
+282	LUBEIGT Edith	FRA	0		0	0											0
+283	KRAUSE Charlotte	GER		0		0	0										0
+284	BIAGIOTTI Matilde	ITA					0										0
+285	TAKAHASHI Fuko	JPN				0	0		0								0
+286	PARTRIDGE Morgan	USA									0						0
+287	FIHOSY Ayesha	GBR				0	0										0
+288	GARIFULINA Regina	RUS			0												0
+288	SUN Jing	CHN							0								0
+288	GRANBASSI Margherita	ITA					0										0
+291	CENKER Freya	AUT		0			0										0
+292	LAFFEY Jessie	USA				0	0										0
+293	EBERT Leonie	GER		0		0	0										0
+294	ABEYNAYAKA Ashoka Udayangani	SRI														0	0
+294	CHEN Qinghui	CHN							0								0
+294	SULIK Sandra	POL	0														0
+294	KARTUKOVA Irina	RUS			0												0
+298	POSER Antonia	GER				0											0
+298	HUANG Jiaxin	CHN							0								0
+300	CARBONE Alejandra-A.	ARG	0	0													0
+301	DZAKHOVA Marianna	RUS			0												0
+301	BLUM Oceane	FRA									0						0
+301	XIONG Xueying	CHN							0								0
+304	HERNANDEZ Aidee	MEX	0	0			0										0
+305	KURACHI Miho	JPN			0	0	0		0								0
+306	AIZAWA Satsuki	JPN			0				0								0
+307	CHEN Xiaoxia	CHN							0								0
+307	CHRZANOWSKA Julia	POL	0														0
+309	MONDT Milja	NED				0	0										0
+310	KRAMARENKO Marina	UKR		0	0												0
+311	MEZA OCEGUERA Victoria Maria Isabel	MEX	0	0			0										0
+312	LETICEE Laura	FRA									0						0
+313	WALZHOFER Nicole	AUT	0	0		0	0										0
+314	DINI Eleonora	ITA					0										0
+315	SZOKOLOVICS Dominique	GBR				0	0										0
+316	MARGARETO Patricia	ESP					0				0						0
+317	CASILLAS Lydia	MEX	0	0			0										0
+318	DESCHNER Stefani	USA							0								0
+319	IBANEZ Delfina	ARG	0	0													0
+320	CORREA Celia	MEX	0	0													0
+321	ZHANG Henan	CHN							0								0
+321	TERNI Maria Ludmila	ARG	0														0
+323	VILLASEÑOR Nora Elena	MEX	0	0													0
+324	FATKULLINA Alina	RUS			0												0
+324	SUN Shouchen	CHN							0								0
+326	KIRSCHEN Kim	GER		0		0	0										0
+327	XU Mengxu	CHN							0								0
+328	BIANCHIN Elisabetta	ITA					0										0
+328	NEBIERIDZE Evgenia	RUS			0												0
+328	TULEN Lola	NED				0											0
+331	WEISS Kim	AUT		0		0											0
+332	STANKEVYCH Olga	UKR		0	0												0
+333	DAI Huili	CHN							0								0
+333	BARTL Thekla	GER				0											0
+335	GARCIA AZUA Barbara	CHI		0	0												0
+336	DAI Zhuzhu	CHN							0								0
+337	BALOGH Orsolya	HUN		0													0
+337	SHI Yun	CHN							0								0
+339	SCHRYER Aimee	CAN			0	0	0										0
+340	MUNOZ Alejandra	CHI		0	0												0
+341	SCHMEL Viktoria	HUN		0													0
+342	MA Hoi Ling	HKG				0	0		0								0
+343	FU Yiting	CHN							0								0
+344	KUNO Momoka	JPN		0													0
+344	SHIGIHARA Jule	GER				0											0
+346	SUSFAL Malgorzata	POL				0											0
+346	LI Xin	CHN							0								0
+348	BRAUN Julia	GER		0		0											0
+349	HAMMERS Maike	GER				0											0
+350	MOOR Valentina	GER				0											0
+351	HOHENADEL Leilani	GER				0											0
+352	KINZEL Jessica	GER				0											0
+353	CHART Yvonne	GBR				0	0										0
+354	DAVILA Monica B.	PUR				0	0										0
+355	NATTAN Sarolta	HUN		0													0
+355	XU Yundi	CHN							0								0
+357	SUN Yanan	CHN							0								0
+358	RIZMAJER Anna	HUN		0													0
+359	KOPPENWALLNER-BOEHM Barbara	AUT				0	0										0
+360	DAMASCHIN Corina	ROU		0													0
+361	BARTHOLME Rahel	GER		0		0											0
+362	NORTHROP Kate	USA				0	0										0
+363	KNAUER Tamina	GER				0	0										0
+364	FRACKENPOHL Helena	GER				0											0
+364	NAPOLI Susanna	ITA					0										0
+366	DICKSON Chloe	GBR				0	0										0
+367	CIMIOTTI Carlotta	SUI					0										0
+368	BALOGH Reka	ROU		0													0
+369	ZSARY Noemi	HUN		0													0
+369	WERNER Sophia	GER				0											0
+371	OKABE Mai	JPN		0													0
+372	JAKUBCOVA Katerina	CZE				0											0
+373	MARINO Maria	ESP					0										0
+374	OGATA Minami	JPN		0													0
+375	LAU In Fong Tova	HKG				0	0										0
+376	GARCIA-GALLARDO Amalia	ESP					0										0
+377	OROSHAZI Csilla	HUN		0						0							0
+378	BUDAVARI Bettina	HUN		0													0
+379	ROMERO Irene	ESP					0										0
+380	DAJCIC Marcela	CRO		0													0

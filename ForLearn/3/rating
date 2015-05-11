@@ -1,0 +1,570 @@
+1	CASSARA Andrea	ITA			32	32	21					(12)	32	48	12			42	219
+2	LEI Sheng	CHN			4	14	12	(2)			48	21	(4)				4	96	199
+3	MA Jianfei	CHN			26	(2)	30	14			21	48	(4)				8	42	189
+4	ABOUELKASSEM Alaaeldin	EGY			(2)	8	6	(2)		48		6	4	21			(4)	78	171
+5	CHOI Byungchul	KOR			14	20	12	(8)			12	39	(2)	12				60	169
+6	BALDINI Andrea	ITA			(2)	(2)	30	20				12	8	21	6			54	151
+7	CHEREMISINOV Alexey	RUS			8	14	12	(4)					14	12	48			42	150
+8	ASPROMONTE Valerio	ITA			(2)	20	(3)	14				(6)	14	30	3		20	42	143
+9	IMBODEN Race	USA			20	(4)	6	(4)				12	20			48	4	24	134
+10	MASSIALAS Alexander	USA	(2)		20	14	(3)	8				(6)	8			39	8	24	121
+11	JOPPICH Peter	GER			14	8	21	26				(6)	(8)	21	6			24	120
+12	LE PECHOUX Erwan	FRA			(2)	26	48	4				3	(2)	(3)	6		4	24	115
+13	AVOLA Giorgio	ITA			(2)	4	12	(4)				(3)	26	39	6		26		113
+14	KRUSE Richard	GBR			4	(2)	3	(0)	4			30	(2)	12	30			12	95
+15	AKHMATKHUZIN Artur	RUS			2	8	39	2					4	(0)	12			24	91
+16	SINTES Victor	FRA			8	(4)	6	(2)				12	8	21	12		(4)	24	91
+17	OTA Yuki	JPN			14	14		2			30	3						24	87
+18	BACHMANN Sebastian	GER			8	(2)	21	(2)				6	4	12	12			24	87
+19	KLEIBRINK Benjamin	GER			2	2	12	(0)				3	14		39			12	84
+20	GANEEV Renal	RUS			8	8	6	(4)					14	6	21			12	75
+21	MIYAKE Ryo	JPN			4	4		(2)			30	12	4	3				12	69
+22	LEFORT Enzo	FRA			(2)	(2)	3	14				21	(2)	3	6		8	12	67
+23	DAVIS James-Andrew	GBR	(1)		4	8	6	(2)				21	(0)	3	12			12	66
+24	FOCONI Alessio	ITA			(0)	(2)	21	8				21	(4)	6			8		64
+25	HUANG Liangcai	CHN			(0)	(0)	3	4			39	3	4				8		61
+26	LALONDE TURBIDE Etienne	CAN			(0)	(0)	6	2				3	(0)	3		30	4	12	60
+27	CHAMLEY-WATSON Miles	USA			4	(0)	(3)	4				6	(2)	6		21	4	12	57
+28	AYAD Tarek	EGY			0	0		2		39			2				0	12	55
+29	MEINHARDT Gerek	USA			(2)	4	6	4				(3)	(2)	6		30	4		54
+30	MAJEWSKI Michal	POL			4	0	(0)	(0)				6		3	30		4		47
+31	ZHU Jun	CHN			(0)	4	3	(0)			21	3	2				2	12	47
+32	HERTSYK Rostyslav	UKR			2	2	6	20	(0)				(0)	3	12				45
+33	SEDOV Artem	RUS			0	(0)		32					2	6			4		44
+34	AWAJI Suguru	JPN			4	2					21	6	8	3					44
+35	CHIDA Kenta	JPN			8	2					12	3	4	3				12	44
+36	KHOVANSKIY Alexey	RUS			2	4	0	(0)					4	30	3				43
+37	MINUTO Martino	TUR			8	2	12	(0)				6	(2)	(0)			14		42
+38	MERTINE Julien	FRA			2	2	3	(0)					2				32		41
+39	GLONEK Radoslaw	POL			(0)	4	3	4				3	(2)	6	21		(0)		41
+40	SCHLOSSER Roland	AUT			4	2	(0)	2				3		12	6			12	41
+41	HATOEL Maor	ISR			2	4	(0)	2					(2)	12	6		14		40
+42	GOMEZ Daniel	MEX			0	(0)	3						0	0		21	4	12	40
+43	PRANZ Rene	AUT			8	(2)	12	(0)				12	(2)	3	3		2		40
+44	LUPERI Edoardo	ITA			8	(4)	(3)	4				6	(4)	12			8		38
+45	CHOUPENITCH Alexander	CZE			4	0	6							6	21				37
+46	ALI Lahoussine	MAR	0	0	(0)		0	0		30				0				6	36
+47	BRAUN Marius	GER		0	(0)	(0)	(0)	0				30		3			2		35
+48	HEO Jun	KOR			2	0					12		20						34
+49	GUYART Brice	FRA			(0)	(0)	3	(0)				12	2	12	3		2		34
+50	ROSOWSKY Husayn	GBR		4		(0)	6	(2)				3	8	3	3		(2)	6	33
+51	SAMANDI Mohamed	TUN		0	0	0		0		21								12	33
+52	CHEUNG Siu Lun	HKG			0	0	3	(0)			21	6	(0)	3					33
+53	FARRAG Sherif	EGY			0	0		0		30			0				2		32
+54	WESSELS Andre	GER			2	0	3	(0)				3	(0)	3	21				32
+55	DARABAN Radu	ROU			4	2	3	2						3	6			12	32
+56	CADOT Jeremy	FRA			0	2		(0)					8	6			14		30
+57	TOLDO Guilherme	BRA			(0)	0	0	(0)	1				(0)	0		12	2	12	27
+58	CHOI Nicholas Edward	HKG			(0)	0	3	0			12	6	0					6	27
+59	LI Hua	CHN				2		8					2				14		26
+60	POGREBNIAK Andrii	UKR			0	(0)	0	14					0	6	6				26
+61	SIMONCELLI Luca	ITA			(2)	4	6	4				6	(0)	6			(4)		26
+62	HINTERSEER Moritz	AUT			(2)	2	(0)	(0)	(0)			6	4	6	6		2		26
+63	ZAPOZDAEV Igor	RUS			14	0	3	4					(0)	3					24
+64	BIONDO Tobia	ITA		3					0				0				20		23
+65	VAN HAASTER Maximilien	CAN				0										21	2		23
+66	JOVANOVIC Bojan	CRO			(0)	0	(0)	0					0	3	12		2	6	23
+67	MARCILLOUX Marcel	FRA			0	(0)	3	8				3	(0)				8		22
+68	GOMEZ David	MEX											0	0		21	0		21
+69	VILJOEN Jacques	RSA			0			0		21									21
+70	CHAMMAKHI Yassine	TUN								21									21
+71	KADAM Babacar	SEN								21									21
+72	TONY HELISSEY Jean-Paul	FRA			(0)	(0)		2				12	2	3			2		21
+73	KAWIECKI Pawel	POL			(0)	4	(0)	(0)				6	2	3	3		2		20
+74	ARIZAGA Raul	MEX				0	3	0						0		12	4		19
+75	SHAITO Zain	LIB			0						12							6	18
+76	JOURNET Benoit	FRA			(2)	2		8				3	(2)	3			2		18
+77	ZAWADA Marcin	POL			(0)	0	3	8				3	4						18
+78	KUTS Roman	RUS			0	0	12	0						6					18
+79	SCAVASIN Fernando	BRA	0	0	(0)	(0)	(0)	(0)	0			6	(0)	0		12	(0)		18
+80	WILLETTE David	USA			0	8	6	0									2		16
+81	DROBYSHEV Oleg	RUS			0	2	6	2						6					16
+82	JOUBERT Terence	FRA			4	(0)	3	4				3	2	(0)			(0)		16
+83	SHIMBO Heitor	BRA			(0)	(0)	(0)	(0)	1			0	0	0		12	2		15
+84	FUKUDA Yusuke	JPN			0	8		2				3	2						15
+85	NGAN Kwoon Yat Kevin	HKG			0	(0)	0	(0)			12	3	0	0					15
+86	HALSTED Laurence	GBR										0	0	3	12				15
+87	ALVEAR Felipe	CHI							0							12	2		14
+88	DUDEY Michael	USA			4	2	0	(0)						6			2		14
+89	RAJSKI Leszek	POL			(0)	0	0	4					4	3	3				14
+90	KOLTYGO Volodymyr	UKR			(0)	4	(0)	2	2				2	0	3				13
+91	LARI Tommaso	ITA			(0)	0	3	0					2				8		13
+92	RIGIN Dmitry	RUS			2	(0)	3	4					0	(0)			4		13
+93	YUNES Klod	UKR			4	0	3	(0)					0	6	0				13
+94	SIMON Vincent	FRA			2	2	3	(0)					2				4		13
+95	PRYMACK Anthony	CAN				0	0									12	0		12
+96	LAKEHAL AYAT Anil	ALG								12									12
+97	HARDWICKE-BROWN Samuel	CAN														12			12
+97	ATKINS James	RSA								12									12
+99	AGUENAM Aklesso	TOG								12									12
+100	FERJANI Mohamed Ayoub	TUN								12									12
+101	MASSOU Mehdi	ALG								12									12
+102	SALL Mouhamadou Moustapha	SEN								12									12
+103	ZHANG Zhenggang	SIN									12		0						12
+104	MCCLURE Landon	RSA								12									12
+104	PEREZ Jhon	VEN														12			12
+106	WU Jie	SIN									12		0						12
+107	BESSAOUD Heythem	TUN								12									12
+108	ZHANG Liangliang	CHN			(0)	(0)	6	2				0	2				2		12
+109	DI FRANCISCA Michele	ITA			0	2	6	2									2		12
+110	BYK Siarhei	BLR			0	2	3	0						0	6				11
+111	LI Chen	CHN			(0)	4		2				3	0				2		11
+112	BORST Sebastiaan	NED	3	1	0	0	0	(0)							6				10
+113	JUNG Chang Yong	KOR			0	2							8						10
+114	HA Taegyu	KOR									6		4						10
+115	KOMISSAROV Dmitry	RUS			2	0		(0)				3		3			2		10
+116	GRIGORYEV Eduard	KAZ			0	0	0	0			6	3							9
+117	FUJINO Daiki	JPN			2	4		(0)				3	0	0					9
+118	SALISCAN Virgil	ROU			0			0						3	6				9
+119	ICHIKAWA Kyoya	JPN			4	2		0				3	0						9
+120	NISTA Lorenzo	ITA			2	(0)	3	2					0				2		9
+121	CHANG Jerry	USA			2	(0)	(0)	2				0	(0)	3			2		9
+122	COOK Keith	GBR	4	2	(0)	(0)	0	0					2						8
+123	SHI Jialuo	CHN			0	8	0	0											8
+124	SANTOS Gael	POR	0	0	(0)	0	0	8							0				8
+125	KWON Young Ho	KOR			4	0							4						8
+126	GAROZZO Daniele	ITA					6										2		8
+127	BARRERA Stefano	ITA			0	2	0	4					2						8
+128	PERRIER Ghislain	BRA			2	2		0					2				2		8
+129	TRANI Francesco	ITA					0		3								4		7
+130	JORGENSEN Patrick	DEN		0	0	(0)	0	2	2						3				7
+131	KENBER Jamie	GBR			0	0	3	2					2						7
+132	PANCHAN Nontapat	THA				2	3	2											7
+133	TOFALIDES Alex	GBR	0	0	(0)	(0)	3	(0)					0	3					6
+134	SAUCEDO Felipe Guillermo	ARG					0	0	0							6			6
+135	TOLOUEI Shervin	IRI			0	0	0	0			6	0							6
+136	GUERBOUCI Oussama	ALG								6									6
+137	BRU Cesar	VEN			0	0	0	0	0							6			6
+138	KIM Hyogon	KOR									6		0						6
+139	MIAWOTOE Komlan Efanam	TOG								6									6
+140	ALVEAR Anibal	CHI							0							6	0		6
+141	LYSHKOVSKI Vladzimir	BLR			0		0	0						0	6				6
+142	PHAM Quoc Tai	VIE									6								6
+143	MULLER Federico Guillermo	ARG														6			6
+144	MOCHKO Lucas	BRA			(0)	(0)	0	(0)	0				0	0		6	0		6
+145	LEAL Antonio J.	VEN			0	0	0	0	0							6			6
+146	SAYYAD GHANBARI Hamed	IRI			0	0					6	0							6
+147	HERNANDEZ VASQUEZ Alejandro	COL														6			6
+148	SON Young Ki	KOR			2	4							0						6
+149	LUGONES RUGGERI Jesus Andres	ARG			0	0										6			6
+150	HAFIDZ Ricky	INA									6								6
+151	WOHLGEMUTH Dominik	AUT		0	(0)	(0)	(0)	(0)	0			3	(0)	3			0		6
+152	ADHAMI Alireza	IRI			0	0					6	0							6
+153	ARIAS Jean Carlos	PUR														6			6
+154	AL MANSOORI Majed	UAE									6								6
+154	LUGO Jonathan	PUR														6			6
+156	TSAI Chih Hsiung	TPE									6	0							6
+157	YEUNG Chi Ka	HKG				0	0	0			6	0	0						6
+158	ESPANA Eri	GUA														6	0		6
+159	BELTRAN Jesus	MEX				0	0	0								6			6
+160	ZAIRUL ZAIMI Mohd Arsad	MAS									6								6
+161	PACHON Santiago	COL														6			6
+161	CURIOSO Wilfred Richard	PHI									6								6
+163	GOLDSTEIN Jeremy	USA				0							0	6					6
+164	PENYA Phanor	COL														6	0		6
+165	NAIZAGEROV Rauan	KAZ									6	0							6
+166	KUNDERA Vaclav	CZE			0	0	0	0							6				6
+167	JAMROZY Marek	AUS			0	0	0	0			6	0							6
+168	OR HTUEL Yaaqov	ISR													6				6
+168	CRUZ JIMENEZ Hector J.	PUR														6			6
+170	LIM Joshua Ian	SIN									6		0						6
+171	MOSTAFA Anas	EGY											0				0	6	6
+172	NEMIROVICH Dzmitry	BLR												3	3				6
+173	SZEKI Bence	HUN			0		3	0							3				6
+174	KROEPLIN Moritz	GER			0	0	0	2				3							5
+175	JEFFERIES Edward	GBR		0	2	0	(0)	(0)				3	0						5
+176	TSORONIS Alexander	DEN	0	0				0	1						3				4
+177	BURNATSEV Ilya	RUS		1								3	0	0					4
+178	GETZ Kurt	USA			4	0	0												4
+179	WOO Michael	USA			(0)	2		0				0	0				2		4
+180	BIRO Peter	HUN			2		0	2											4
+181	CUSACK Brendan Francis	IRL	0	0	0	0	0								3				3
+182	POSCHARNIG Johannes	AUT		0	(0)	0	0	(0)						3			0		3
+183	ULASIK Yauheni	BLR			0		0	0						0	3				3
+184	JONES Chris	AUS									3	0							3
+185	KULAKOV Dmitriy	KAZ				0	0	0	0		3	0							3
+186	OSMAN Wassim	LIB									3								3
+187	HO Long Tin	MAC									3								3
+188	SZABADOS Kristof	HUN		0	0		0	0							3				3
+189	AL HAMADI Khalid	QAT									3								3
+190	VELAUTHAM Vinoth Kumar	IND									3								3
+191	NAKIS Theodoros	GRE			0	0	0	0							3				3
+192	MOKANNON Aman	BRN									3								3
+193	OR Tomer	ISR													3				3
+194	SZABADOS Gabor	HUN			0		3	0							0				3
+195	MAZZA Lorenzo	HUN			0	0	0	0							3				3
+196	GUSTINELLI Johann	GER			0	0	(0)	0						3			0		3
+197	LECOCQ Hans Joachim	BEL			0	0	0	0						0	3				3
+198	SAITO Yu	JPN			0	0		0				3	0						3
+199	OSMANSKI Pawel	POL			(0)	(0)	0	0					0	3			0		3
+200	LLAVADOR Carlos	ESP		0		0		0							3				3
+201	CHU Wing Hong	HKG			(0)	0	0	(0)				3	0	0					3
+202	TSUBOI Kohei	JPN										3							3
+203	MORI Atsuhisa	JPN										3							3
+204	ARSLANOV Timur	RUS												3					3
+205	MEPSTEAD Marcus	GBR	2	0	0	(0)	(0)	0					0						2
+206	SOLOVIEV Evgeny	RUS		2	0	0													2
+207	PAROLI Alessandro	ITA	0	1					1										2
+208	PEGGS Ben	GBR	0	0	(0)	(0)		(0)	0				(0)	0			2		2
+209	SAFIN Timur	RUS		0									0	0			2		2
+210	PARKINS Benjamin	USA			0	2													2
+211	CLAIRET ROA Dimitri Patrik	COL			0			2											2
+212	SYRACHYNSKYY Pavlo	UKR			2		0	0											2
+213	DOERR Georg	GER						0									2		2
+214	ZHEREBCHENKO Dmitry	RUS			0	0		2											2
+215	MOCEK Slawomir	POL			0	2	0	0											2
+216	CARTY CARTY Michael	CUB															2		2
+216	PARK Byung Cheol	KOR											2						2
+216	DE LAMBALLERIE Guy	FRA			2														2
+219	HINTERSEER Tobias	AUT			0	0		0					2	0	0				2
+220	BUQUET Antonin	FRA			2														2
+221	PITTA Guillaume	FRA			2														2
+222	TELNYKH Taras	UKR			0		0	2						0					2
+223	CALDWELL Turner	USA			0												2		2
+224	MATHIEU Adam	USA															2		2
+225	LI Bingwei	CHN					0	2					0						2
+226	KIM Minkyu	KOR											2						2
+227	ELSNER Dan	GER	1																1
+228	MELIA Rhys	GBR	1																1
+229	JANDA Michal	POL	1	0	0	0		0											1
+230	DEGTYAREV Ilya	RUS		1															1
+231	LIM Alex	CAN	0	0		0	0	0											0
+232	ZELAZKO Rafal	POL	0																0
+233	HEDENSKOG Filip	SWE		0	0		0		0										0
+234	WLOSEK Maciej	POL	0	0															0
+235	HOLDER Peter	GBR	0	0					0										0
+236	PAGHIEV Boris	MDA						0	0						0				0
+237	SCHARF Willi	GER				0		0	0					0					0
+238	NAGAEV Nikita	RUS		0															0
+239	SOUZA Joao Antonio	BRA	0		0	0	0	(0)	0										0
+240	ANEN Cedric	LUX		0	0			0											0
+241	DOBIASCH Martin	AUT		0	0	0		0											0
+242	KAUFMANN Florian	GER	0																0
+242	TUERKIS Daniel	GER							0										0
+244	JORGENSEN Philippe	DEN	0		(0)	0	0	0	0						0				0
+245	IACONIS Matteo	ITA		0															0
+246	ALEXANDER David	IRL	0	0	0			0	0										0
+247	ROHLFS Matthijs	NED	0	0				0											0
+248	ADJEB Mel Rodrigue	CIV								0									0
+249	BARWELL Peter	GBR	0	0															0
+250	HADI Islam Bilel	ALG								0									0
+251	LICHAGIN Kirill	RUS		0										0					0
+252	ZHUKOV Kirill	RUS		0															0
+252	BAKKARY Anss	MAR								0									0
+254	JACKSON Alpha	COD								0									0
+255	JANSSEN Max	NED	0	0				0							0				0
+256	HAGLUND Andreas	SWE							0										0
+256	AKKOURI Soufiane	MAR								0									0
+258	KIIL Filip	DEN	0		(0)	0	0	0	0										0
+259	AGBOKE Franck Barthelemy	CIV								0									0
+260	KRALIK Andrej	SVK	0	0					0										0
+261	SUDILOVSKY Stanislav	ISR		0															0
+261	GIANELLO Marco	ITA							0										0
+263	ABIDOGUN Kola	GBR		0					0										0
+264	LLOYD Alexander	GBR	0	0															0
+265	CHRISTEL Felix	GER							0										0
+266	SIMMONS Alexander	CAN	0		0	0	0	0											0
+267	FILIPPOV Evgeniy	RUS		0															0
+267	SIMONE Mino	ITA	0																0
+269	DELBERGUE Guillermo	ESP		0		0									0				0
+270	ANDERSEN Emil Ulrik	DEN					0	0	0						0				0
+271	VILEM Michal	SVK	0	0					0										0
+272	BILLING Matthew	GBR	0	0															0
+273	RATTAN Amol	GBR		0	0	0													0
+274	SAND Robin	SWE		0					0										0
+275	TORRES SANDI Daniel	CRC														0			0
+276	MACEDO Pedro	POR	0	0	0														0
+277	SILVA Ruben	CHI							0								0		0
+278	JUSTINIANO Angelo	PUR														0			0
+278	PARRA COLLAZOS Fabian Andres	COL														0			0
+280	TEIXEIRA Diogo	POR	0	0	(0)	0	0	0											0
+281	GSCHING Alexander	GER	0					0											0
+282	WERTSEN Johan	SWE							0										0
+282	PEREZ Jonner	VEN														0			0
+284	MORENO URBINA Marcos	CRC														0	0		0
+285	DONNE Alexis	BEL	0																0
+286	GARCIA Pablo	GUA														0			0
+286	SEEDA Youssif	EGY							0										0
+286	ASKARY Siroos	NED	0																0
+289	PLOCHARSKI Filip	POL	0	0															0
+290	LOPEZ GONZALEZ Jose	GUA														0	0		0
+291	FINETTI Dario	ITA							0										0
+291	HENDRIE Thomas	GBR		0															0
+293	LOPEZ Luis	GUA														0	0		0
+294	RIVERA CORNIEL Miguel Gabriel	DOM														0			0
+294	MORARU Alexander	NED	0																0
+294	BORONTOV Pavel	RUS		0															0
+297	CELLER Pavol	SVK	0						0										0
+298	BABAOGLU Tevfik Burak	TUR		0	0														0
+299	HART Jeremy	AUS									0	0							0
+300	PUGGAARD-HESS Mikkel	DEN		0					0										0
+301	TAN Yuan Zi	SIN									0								0
+301	SAMORA GERONIMO Jose Gabriel	DOM														0			0
+301	O'DONNELL Callum	GBR		0															0
+301	MARONATO Jacopo Giovanni	ITA	0																0
+305	SALES Fabian	CRC	0													0	0		0
+306	STEINER Daniel	HUN		0			0	0											0
+307	LOK Kai Wang	MAC									0								0
+307	ZIEBELL Olaf	GER	0																0
+307	SHVETSOV Alexei	RUS							0										0
+310	VAN TOL Jim	NED	0																0
+310	AGUSSALIM Aryanto	INA									0								0
+310	REICHETZER Tobias	AUT		0															0
+310	RODRIGUEZ MEDINA Darlin Rafael	DOM														0			0
+314	ELLIKER Daniel	GBR	0	0															0
+315	KUMAR Vijay	IND									0								0
+315	FRANCESON Filip	POL		0															0
+317	SALMAN Ali	IRQ									0	0							0
+318	WONG Soi Cheong	MAC									0								0
+318	RIJSENBRIJ Hans	NED	0																0
+318	NAHHAS Mohamed	EGY							0										0
+321	ROSOWSKY Ahmed	GBR		0															0
+321	GRUM-SCHWENSEN Thorlek	DEN							0										0
+321	YIN Longda	USA	0																0
+324	COOKE Christopher	IRL	0	0	(0)	0	0	(0)	0										0
+325	BATTUMUR Batsuuri	MGL	0					0			0	0							0
+326	REINDAHL Jeppe	DEN		0				0	0										0
+327	TSEYLER Dmitriy	RUS		0															0
+327	MUELLER Till	GER	0																0
+329	VAN OEVEREN Edgar	NED	0	0	0			0											0
+330	MADAN Isaac Abhay	IND									0								0
+331	SCARASCIA MUGNOZZA Giancarlo	ITA	0						0										0
+332	MARTIN Fergal	IRL	0	0															0
+333	MARTINS Jose Diogo	POR		0															0
+333	BOLDBAATAR Tsengel	MGL									0								0
+335	KREJCIK Jan	CZE		0	0			0							0				0
+336	VAN EGMOND Dirk Jan	NED	0	0															0
+337	RAEKER Hans Martin	GER							0										0
+337	SIESS Michal	POL		0															0
+339	VALICSEK Peter	HUN							0										0
+339	HARI Mate	HUN		0															0
+339	SINGER Robert	NED	0																0
+342	WIKSTROM Olle	SWE		0					0										0
+343	TAKALA Roope	FIN							0						0				0
+344	ABOLTINS Roberts	LAT		0															0
+344	KULHANEK Nathan	NED													0				0
+344	NONHEBEL Floris	NED	0																0
+347	RIZELL Simon	SWE		0					0										0
+348	ROBINSON Daniel	GBR	0	0															0
+349	NILSSON Mats	SWE							0										0
+350	ALLEN Thomas	GBR		0															0
+350	AVRIL Casey	GBR	0																0
+352	PASINI Lorenzo	ITA		0															0
+352	BROSCHEID Frederik	GER							0										0
+352	DECHAMPS Benjamin	BEL	0																0
+355	ROOK Michael	NED	0	0															0
+356	THORNER Daniel	SWE		0					0										0
+357	BASINSKI Mikolaj	POL		0															0
+357	STIJLAART Mats	NED													0				0
+359	PETERSTRAND Ola	SWE							0										0
+359	ELLIS Boaz	ISR													0				0
+361	PIOVESAN Giacomo	ITA							0										0
+362	JANDA Piotr	POL		0		0		0						0					0
+363	BROSNAN James	GBR		0					0										0
+364	LERCH Lukas	GER	0																0
+365	LEIVISKA Petteri	FIN							0						0				0
+366	OZSANAT Adnan	TUR												0	0				0
+367	HAAGMAN Leon	NED	0																0
+368	VAN VEEN Tjeerd	NED	0	0															0
+369	AKYALCIN Gokhan	TUR												0	0				0
+370	MANDOURY Kariam	EGY							0										0
+371	DE HAAS Martijn	NED	0																0
+371	LITLE Elishua	ISR		0															0
+371	HASAN TANI Hamdi	NOR							0										0
+374	BON Ruben	NED	0																0
+374	LORENZEN Ulver Spangsberg	DEN							0										0
+376	NIVARD Daniel	NED	0	0															0
+377	KOMSIC Ivan	CRO				0	0								0				0
+378	GRYGLEWSKI Krystian	POL												0					0
+378	CONSTANT Manoel	BRA							0										0
+380	KURTULUS Yunus	TUR												0	0				0
+381	SURWILLO Jakub	POL		0															0
+381	MATSUO Yuki	JPN										0							0
+383	CIEPLY Tomasz	POL			0	0	0	0											0
+384	POSTHUMA Daan	NED	0																0
+384	AZUMA Jumpei	JPN										0							0
+386	MITTELFARWICK Thierry	GER		0				0											0
+387	POSTHUMA Frans	NED	0																0
+387	MOON Myeong Jun	KOR											0						0
+387	MONDT Bas	NED	0																0
+390	JAY MEJIAS Ruben	CUB															0		0
+390	YAMAGUCHI Toru	JPN										0							0
+390	STASULANS Toms	LAT		0															0
+393	CHAU Long Ling	HKG					0	0											0
+394	VINCK Matthieu	BEL	0																0
+394	HERNANDEZ MENDEZ Jesus Ricardo	MEX															0		0
+394	VAN DER WEIDE Rick	NED	0																0
+397	OISHI Riki	JPN										0	0						0
+398	ROBINSON Alex	GBR		0															0
+399	KRAMER Bastiaan	NED	0																0
+399	MATSUYAMA Kyosuke	JPN										0							0
+401	WEINBERGER Oskar	SWE		0															0
+401	VAN DER KLEI Thor	NED	0																0
+401	PLA VALLBE Jorge	ESP					0												0
+404	BOULLE Pierre	FRA			0														0
+405	SANITA Andre	GER			0			0						0			0		0
+406	SILVA Antonio	POR		0		0													0
+407	KURFURST Jan	CZE		0															0
+407	JAINATHSINGH Edgar	NED	0																0
+407	LISZKAI Tamas	HUN		0															0
+410	DELGADO GARCIA Jesus	CUB															0		0
+410	VAN UITERT Bastiaan	NED	0																0
+410	MOON Kyeongsik	KOR											0						0
+413	DIACONU Alexandru Daniel	ROU			0		0	0											0
+414	KIM Dae Young	KOR											0						0
+414	MERINGOLO Alessandro	ITA					0												0
+414	GOTO Manato	JPN										0							0
+417	DJITLI Roman	ALG			0														0
+417	LEE Sun Woo	KOR											0						0
+417	RIANO TORRES Jesus	CUB															0		0
+420	BLAZEJEWSKI Tomasz	CAN						0									0		0
+421	STUEHLER Maximilian	AUT		0															0
+422	STRATE Maximilian	GER		0															0
+422	MOGENA FROMETA Enmanuel Abdiel	CUB															0		0
+424	SAKATA Masamichi	JPN										0	0						0
+425	FARK Frederic	GER			0	0	0	0											0
+426	FEASTER John	GBR		0															0
+426	HIGASHITANI Kazuhiko	JPN										0							0
+428	XU Yu	CHN					0	0				0	0						0
+429	GATAI Robert	HUN			0		0	0											0
+430	BRODEUR Marc-Antoine	CAN															0		0
+431	ELKASSAS Adam	USA			0	0													0
+432	CARDILLO Julian	USA															0		0
+433	LAM Chi Ming Andy	HKG										0	0						0
+434	ZSACSEK Viktor	AUT		0															0
+435	XAVIER Marco	BRA					0	0									0		0
+436	MORRIS Richard	GBR		0															0
+437	PRZYBYSLAWSKI Michal	POL			0	0													0
+438	SOUZA Pierre	BRA															0		0
+438	MARTIN Julius	SWE		0															0
+438	OTA Hayato	JPN										0							0
+441	BROUGHAM Samuel	GBR		0															0
+442	SCHLOSBERG Ira	USA															0		0
+442	LEE Kwanghyun	KOR											0						0
+442	OKIMOTO Takuro	JPN										0							0
+442	WARD Samuel	GBR		0															0
+446	PRADES ROSABAL Redys Hanngrs	CUB															0		0
+447	BRYANT Acland	GBR		0															0
+447	GAVIRIA Nicholas	COL															0		0
+449	LEHMANN Lucas	GER			0	0		0											0
+450	PARCHATKA Niklas	GER						0											0
+450	NOWOSIELSKI Ksawery	POL		0															0
+452	WANG Dominik	AUT			0		0							0					0
+453	GILL Alexander	AUT		0															0
+454	PERELMANN Mark	GER			0			0											0
+455	KRASNOV Petr	RUS		0															0
+456	FAYZULLIN Rinat	RUS						0						0					0
+457	CZUCKERMANN Idan	ISR		0				0											0
+458	AGUILERA LUIS Humberto	CUB															0		0
+459	PROVODNIKOV Alexandr	KAZ					0							0					0
+460	FEASTER Daniel	GBR		0															0
+460	KIM Dongsu	KOR											0						0
+462	MACHADO Jeronimo	BRA			0	0	0	0									0		0
+463	PARK Junyoung	KOR											0						0
+463	KOENIG Gregory	FRA			0														0
+465	GOLLAN Aljoscha	GER				0		0											0
+466	ESPERON Rafael	ESP			0	0	0	0											0
+467	AZERRAD Yoav	ISR		0				0											0
+468	CUELLAR Jefferson	COL															0		0
+468	KEYES Alastair	CAN		0															0
+470	MONTEALEGRE Daniel	CRC															0		0
+470	DANCHEV Kaloyan	BUL		0															0
+472	ZABICKI Ignacy	POL		0															0
+473	ARCHER Kristjan	GBR		0															0
+473	JANG Woo Yong	KOR											0						0
+475	BERJOZKIN Anton	HUN			0		0												0
+476	SALE Joseph	GBR		0															0
+476	HENDRIE George	GBR		0															0
+478	HARTMANN Marcus	GER			0			0											0
+479	ISAKSON Erik	SWE		0															0
+480	CHU Andrew	GBR		0															0
+481	CEGIELSKI Bartosz	POL		0															0
+481	LEUNG Sing Ho	HKG											0						0
+483	FITTON Matthew	GBR		0															0
+484	JEON Kwang Jae	KOR											0						0
+485	JENNINGS Chris	GBR		0															0
+486	SZUMIELEWICZ Pawel	POL			0			0											0
+487	SERRI Cedrik	FRA			0														0
+488	KONTOCHRISTOPOULOS Nikolaos	GRE			0	0	0	0											0
+489	ESCURAT Aymeric	FRA			0														0
+489	KIM Hoon	KOR											0						0
+489	KRAATZ Ingvar	GER		0															0
+492	NKENE Cedric	FRA			0														0
+492	GROSS Liran	ISR		0															0
+494	MOON Ho Seong	KOR											0						0
+494	PAUTY Maxime	FRA			0														0
+496	LAJOSO Miguel	POR		0															0
+497	FELNER Markus	AUT		0															0
+498	CHUNG Jyae Gyu	KOR											0						0
+498	PRYOR John	GBR		0															0
+500	WILLIAMS Dean	AUS				0	0												0
+501	CHU David	GBR		0															0
+501	PARK Guy Meen	KOR											0						0
+503	MANSON James	GBR		0															0
+503	LEE Jeong Yoon	KOR											0						0
+505	WATSON Jack	GBR		0															0
+506	TAM Yuk Wang	HKG			0								0						0
+507	BEARDMORE Alexander	GBR		0															0
+507	JUNGHANNS Richard	GER						0											0
+509	KOPER Damian	POL		0															0
+510	KHODAIR Ahmed	EGY				0		0											0
+511	DONOVAN Alex	GBR		0															0
+511	RAISCH Andrej	GER						0											0
+513	STUEHLER Sven	AUT			0	0	0	0											0
+514	MOLLARD Christopher	GBR		0															0
+515	CHAN Howie Ho Yin	HKG											0						0
+516	KIM Mujun	KOR											0						0
+517	DORNELLES Erik	BRA				0	0												0
+518	WONG Hiu Man	HKG											0						0
+518	LAU Tak Sing Edwin	HKG											0						0
+518	PORS Christian	DEN		0															0
+521	ULMAN Yotam	ISR		0				0											0
+522	IM Cheolwoo	KOR											0						0
+522	SUPE Kristaps	LAT		0															0
+524	GROSS Niv	ISR		0				0											0
+525	SHARMAN Conor	GBR		0															0
+526	YENG Aik Feng	AUS			0	0													0
+527	STANDEN David	GBR		0															0
+527	LIU Ka Leung	HKG											0						0
+529	ST JOHN Charlie	GBR		0															0
+529	ZALABA Peter	HUN						0											0
+529	ANTONCIC Luka	SLO		0															0
+529	SONG Hyun Jae	KOR											0						0
+533	CINTI Riccardo	ITA					0												0
+534	PRAPROTNIK Davor	SLO		0															0
+535	SENENT Pedro	ESP				0		0											0
+536	PELLETIER Jose Alberto	MEX				0	0	0											0
+537	PENNY-DIMRI Jahan	AUS			0	0	0	0											0
+538	LINALDI Alberto	MEX				0													0
+539	MALACHENKO Franck	FRA			0														0
+540	RISTORI Ricardo Nicolas	ARG					0												0
+541	BUNDSCHUH Martin	GER						0											0
+542	TANG Tsz Hin	HKG					0												0
+543	ALZAFIRI Ahmed	KUW				0													0
+544	NUNEZ Luis	VEN			0	0													0
+545	ZDANEVICH Raman	BLR						0											0
+546	SHAMI Aziz	ISR			0			0											0
+547	COLLINEAU Virgile	FRA			0														0
+547	LACASTA Sergio	ESP				0													0
+549	VALLEJO Inigo	ESP				0													0
+550	MELIJOSA Pablo	ESP				0													0
+551	SOUTO Miguel	ESP				0													0
+551	GMEREK Tomasz	POL			0														0
+553	KAHL Alexander	GER						0											0
+554	PINTO Daniel	COL				0													0
+555	AL WALID Naser	KUW				0													0
+556	MACHADO Joao	POR				0													0
+556	ESSAM Mohamed	EGY			0														0
+558	BANDACH Leszek	POL				0													0
+558	FERNANDEZ-MIRANDA Jose M.	ESP				0													0
+560	TRAVERSA Gabriel	ESP				0													0
+561	MARINO NEGRON Isidro	ESP				0													0
+562	HANNAH Simon	AUS			0	0													0
+563	MAXEM Matthias	GER						0											0
+563	PETRUSENCO Serghei	MDA						0											0
+565	VESPER Marian Alexander	GER						0											0
+565	TEISSEIRE Nicolas	CAN			0														0
+567	AGUIRRE Cesar	VEN			0														0
+568	STIENHENSER Dominik	GER						0											0
+569	BAPTISTA Manuel	POR						0											0
+570	ROLLAND Maxime	NZL			0														0

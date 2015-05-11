@@ -18,6 +18,7 @@ public class Evaluator {
                     Classifier classifier = new Classifier();
                     classifier.buildClassifier(i, (int)cParamGrid[j], kernelParamGrid[k]);
                     double estimator = classifier.getEstimator();
+                    System.out.println(getNowResults(cParamGrid[j], kernelParamGrid[k],i, estimator));
                     if (estimator > correct){
                         correct = estimator;
                         bestKernel = i;
@@ -44,6 +45,23 @@ public class Evaluator {
             stringBuilder.append("RBF kernel\n");
         }
         stringBuilder.append("\tCorrect: " + Double.toString(correct) + "\n");
+        return stringBuilder.toString();
+    }
+    public String getNowResults(double c, double kernelP, int kernelType, double correct){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Parametrs:\n");
+        stringBuilder.append("\tC: " + Double.toString(c) + "\n");
+        stringBuilder.append("\tKernel parametr: " + Double.toString(kernelP) + "\n");
+        stringBuilder.append("\tKernel: ");
+        if (kernelType == 1){
+            stringBuilder.append("polynomial kernel\n");
+        }else if (kernelType == 2) {
+            stringBuilder.append("normalized kernel\n");
+        }else {
+            stringBuilder.append("RBF kernel\n");
+        }
+        stringBuilder.append("\tCorrect: " + Double.toString(correct) + "\n");
+        stringBuilder.append("------------------------------------------------------\n");
         return stringBuilder.toString();
     }
     private double[] getGrid(double start, double step, double end){

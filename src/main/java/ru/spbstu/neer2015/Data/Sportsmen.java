@@ -9,13 +9,18 @@ public class Sportsmen {
     private double[] results;
     private int i;
     private int place;
-    public Sportsmen(String name, int place){
+    private double country;
+    private int rating;
+    public Sportsmen(String name, int place, double country){
         this.name = name;
         this.results = new double[dimensions];
         i = 0;
         this.place = place;
+        this.country = country;
     }
-
+    public void setRating(int pos){
+        this.rating = pos;
+    }
     public Sportsmen(Sportsmen sportsmen){
         name = sportsmen.name;
         results = new double[dimensions];
@@ -71,11 +76,9 @@ public class Sportsmen {
         this.place = place;
     }
     public void pushResult(double result){
-        try {
+        if (i < results.length) {
             results[i] = result;
             i++;
-        }catch (Exception e){
-            System.out.print(name);
         }
     }
     public void setResults(){
@@ -136,7 +139,7 @@ public class Sportsmen {
         }
         if (mean){
             mid = Math.pow(mid/numberBests, power);
-           result += Double.toString(results[0]);
+            result += Double.toString(results[0]);
             result+= ",";
             result += Double.toString(mid);
             result+= ",";
@@ -149,6 +152,12 @@ public class Sportsmen {
             for (int j = dimensions-1; j > dimensions-numberBests-1; j--) {
                 result += Integer.toString((int)Math.pow(results[j], power)) + ",";
             }
+        }
+        if (addCountry) {
+            result += Double.toString(country) + ",";
+        }
+        if (addRating) {
+            result += Integer.toString(rating) + ",";
         }
         result += Integer.toString(place);
         return result;

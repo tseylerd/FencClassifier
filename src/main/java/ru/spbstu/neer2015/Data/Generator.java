@@ -9,11 +9,18 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import static ru.spbstu.neer2015.Data.Setter.*;
+import static ru.spbstu.neer2015.Data.Setter.rating;
 
 public class Generator {
     private ArrayList<Sportsmen> sportsmens;
-    public void saveTrainSetToFile() throws IOException{
-        saveSportsmens();
+    private HashMap<String, Double> counties;
+    public Generator() throws IOException{
+        counties = new HashMap<>();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(countiesPath));
+        String country;
+        while ((country = bufferedReader.readLine())!=null){
+            counties.put(country, (double)country.hashCode());
+        }
     }
     private void filterSet(){
         HashSet<Sportsmen> setFiltered = new HashSet<Sportsmen>();
@@ -47,17 +54,12 @@ public class Generator {
         }
         return filteredSet;
     }
-    private void writeHeader(BufferedWriter bufferedWriter) throws IOException{
-        bufferedWriter.write("@relation Sportsmens\n" +
-                "\n" +
-                "@attribute Name string\n");
-        if (mean){
-            bufferedWriter.write("@attribute 0 numeric\n" +
-                "@attribute 1 numeric\n");
-        }else {
-            for (int i = 0; i < numberBests + 1; i++) {
-                bufferedWriter.write("@attribute " + i + " numeric\n");
-            }
+    private void writeAttributes(BufferedWriter bufferedWriter) throws IOException{
+        bufferedWriter.write("\n@attribute Name string\n");
+        int start = 0;
+        int end = getLastAttribute();
+        for (int i = start; i < end; i++) {
+            bufferedWriter.write("@attribute " + i + " numeric\n");
         }
         bufferedWriter.write("@attribute Class {");
         for (int i = 0; i < classesNumber; i++) {
@@ -66,7 +68,26 @@ public class Generator {
         bufferedWriter.write(Integer.toString(classesNumber)+"}\n" + "\n");
         bufferedWriter.write("@data\n");
     }
-    private void saveSportsmens() throws IOException{
+    private int getLastAttribute(){
+        int result;
+        if (mean){
+            result = 2;
+        }else {
+            result = numberBests + 1;
+        }
+        if (addCountry){
+            result++;
+        }
+        if (addRating){
+            result++;
+        }
+        return result;
+    }
+    private void writeHeader(BufferedWriter bufferedWriter) throws IOException{
+        bufferedWriter.write("@relation Sportsmens\n");
+        writeAttributes(bufferedWriter);
+    }
+    public void saveSportsmens() throws IOException{
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(pathToTrainSet));
         writeHeader(bufferedWriter);
         for (Sportsmen sportsmen : sportsmens){
@@ -90,20 +111,45 @@ public class Generator {
             return defaultYears;
         }
     }
-    private void extractFromFolder(final String folder) throws FileNotFoundException, ParseException{
+    private double getNumberOfCountry(String country){
+        return counties.get(country);
+    }
+    private HashMap<String, Integer> getRating(final String path) throws IOException{
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        String s;
+        HashMap<String, Integer> result = new HashMap<>();
+        while ((s = bufferedReader.readLine()) != null){
+            String[] arr = s.split("\t");
+            int pos = Integer.parseInt(arr[0]);
+            String name = arr[1];
+            result.put(name, pos);
+        }
+        return result;
+    }
+    private void addFinalRating(Sportsmen sportsmen, HashMap<String, Integer> rat){
+        if (addRating){
+            Integer pos = rat.get(sportsmen.getName());
+            if (pos == null){
+                pos = sportsmen.getPlace();
+            }
+            pos *= 10;
+            sportsmen.setRating(pos);
+        }
+    }
+    private void extractFromFolder(final String folder) throws ParseException, IOException{
         String pathToFolder = pathToResults + folder;
         Scanner scanner = new Scanner(new FileReader(pathToFolder+world));
-        HashMap<String, Sportsmen> hashMap = new HashMap<String, Sportsmen>();
-        int k = 0;
+        HashMap<String, Sportsmen> hashMap = new HashMap<>();
+        HashMap<String, Integer> rat = getRating(pathToFolder + rating);
         while (scanner.hasNext()){
             String[] line = scanner.nextLine().split("\t");
-
             double place = Integer.parseInt(line[0]);
-            //+Double.toString(place);
             String date = line[4];
-            String name = line[2] + date;
-            Sportsmen sportsmen = new Sportsmen(name, (int)placeToClass(place));
+            String name = line[2];
+            String country = line[3];
+            Sportsmen sportsmen = new Sportsmen(name, (int)placeToClass(place), getNumberOfCountry(country));
             sportsmen.setYearsOld(getYearsOld(date));
+            addFinalRating(sportsmen, rat);
             hashMap.put(name, sportsmen);
         }
         for (int i = 1; i < competitionsNumber; i++) {
@@ -118,8 +164,7 @@ public class Generator {
         HashSet<String> hashSet = new HashSet<String>();
         while (scanner.hasNext()){
             String[] line = scanner.nextLine().split("\t");
-            String date = line[4];
-            String name = line[2] + date;
+            String name = line[2];
             if (hashMap.containsKey(name)){
                 double place = Integer.parseInt(line[0]);
                 if (!hashMap.get(name).ifFull()) {
@@ -133,5 +178,11 @@ public class Generator {
                 sportsmen.pushResult(defaultResult);
             }
         }
+    }
+
+    public static void main(String[] args) throws Exception{
+        Generator generator = new Generator();
+        generator.generateTrainSet();
+        generator.saveSportsmens();
     }
 }

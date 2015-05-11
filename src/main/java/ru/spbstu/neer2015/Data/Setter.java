@@ -7,12 +7,15 @@ import weka.classifiers.functions.supportVector.RBFKernel;
 
 public class Setter {
     public final static boolean yearsOld = true;
+    public final static boolean addCountry = true;
+    public final static boolean addRating = true;
     public final static int defaultYears = -1;
     public final static String pathToResults = "ForLearn/";
     public final static String pathToTrainSet = "ForLearn/Result/train";
+    public final static String rating = "rating";
     public final static String world = "world";
     public final static int dimensions = 9;
-    public final static int numberBests = 6;
+    public final static int numberBests = 8;
     public final static double power = 1;
     public final static int numberOfTrainingFolders = 10;
     public final static int competitionsNumber = 9;
@@ -35,6 +38,7 @@ public class Setter {
     public final static double startKernel = 1;
     public final static double endKernel = 4;
     public final static double stepKernel = 0.1;
+    public final static String countiesPath = "data/countries.txt";
     public static double placeToClass(final double place){
         if (sayThatGood){
             if (place < 17){
@@ -65,7 +69,7 @@ public class Setter {
         }
     }
     public static Kernel getKernel(int type, double param){
-        switch (kernel){
+        switch (type){
             case 1: {
                 PolyKernel polyKernel = new PolyKernel();
                 polyKernel.setExponent(param);
@@ -79,6 +83,18 @@ public class Setter {
             case 3: {
                 RBFKernel rbfKernel = new RBFKernel();
                 rbfKernel.setGamma(param);
+                return rbfKernel;
+            }
+            case 4: {
+                PolyKernel polyKernel = new PolyKernel();
+                return polyKernel;
+            }
+            case 5: {
+                NormalizedPolyKernel normalizedPolyKernel = new NormalizedPolyKernel();
+                return normalizedPolyKernel;
+            }
+            case 6: {
+                RBFKernel rbfKernel = new RBFKernel();
                 return rbfKernel;
             }
             default: return new PolyKernel();

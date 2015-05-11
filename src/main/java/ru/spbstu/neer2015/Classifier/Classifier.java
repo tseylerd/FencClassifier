@@ -35,8 +35,12 @@ public class Classifier {
     public void buildClassifier(final int kernelType, final int c, double param) throws Exception{
         SMO smo = new SMO();
         Kernel kernel1 = getKernel(kernelType, param);
+        String[] opt = kernel1.getOptions();
         smo.setKernel(kernel1);
         smo.setC(c);
+        for (int i = 0; i < opt.length; i++) {
+            System.out.println(opt[i]);
+        }
         Remove remove = new Remove();
         remove.setAttributeIndices("1");
         classifier.setFilter(remove);
@@ -78,9 +82,9 @@ public class Classifier {
     public static void main(String[] args) throws Exception{
         Generator generator = new Generator();
         generator.generateTrainSet();
-        generator.saveTrainSetToFile();
+        generator.saveSportsmens();
         Classifier classifier1 = new Classifier();
-        classifier1.buildClassifier(kernel, 10, 1);
-        System.out.print(classifier1.getEstimator());
+        classifier1.buildClassifier(4, 10000, 0.01);
+        classifier1.crossValidateToConsole();
     }
 }
