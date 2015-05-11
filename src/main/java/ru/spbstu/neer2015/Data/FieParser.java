@@ -2,9 +2,6 @@ package ru.spbstu.neer2015.data;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.net.SocketTimeoutException;
-
-import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,7 +11,7 @@ import org.jsoup.select.Elements;
  * Created by tseyler on 11.05.15.
  */
 public class FieParser {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("SportsmensHands"));
         String url = "http://fie.org/fencers/fencer/";
         for (int i = 1; i < 60000; i++) {
@@ -23,7 +20,7 @@ public class FieParser {
             System.out.println("----------------");
             try {
                 String u = url + Integer.toString(i);
-                Document document = Jsoup.connect(u).timeout(10*1000).get();
+                Document document = Jsoup.connect(u).timeout(10 * 1000).get();
                 Elements elementsHand = document.getElementsByTag("li");
                 Elements elementsName = document.getElementsByTag("h2");
                 String name = elementsName.get(0).text();
@@ -42,7 +39,7 @@ public class FieParser {
                         bufferedWriter.write("1\n");
                     }
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 continue;
             }
         }

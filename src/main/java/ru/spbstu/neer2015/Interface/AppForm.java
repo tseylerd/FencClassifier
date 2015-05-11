@@ -2,6 +2,7 @@ package ru.spbstu.neer2015.Interface;
 
 
 import ru.spbstu.neer2015.classifier.Classifier;
+import weka.core.Instance;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,26 +13,31 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+import static ru.spbstu.neer2015.data.Setter.*;
+
 /**
  * Created by tseyler on 11.05.15.
  */
 public class AppForm extends JFrame {
-    ArrayList<JTextField> competits;
-    Classifier classifier;
-    JLabel predict;
-    JRadioButton right;
-    JRadioButton left;
-    JTextArea individualRating;
-    JTextArea teamRating;
-    JComboBox countries;
-    public AppForm() throws Exception{
+    private ArrayList<JTextField> competits;
+    private Classifier classifier;
+    private JLabel predict;
+    private JRadioButton right;
+    private JRadioButton left;
+    private JTextField individualRating;
+    private JTextField yearsOld;
+    private JTextField teamRating;
+    private JComboBox countries;
+    private JLabel message;
+
+    public AppForm() throws Exception {
         classifier = new Classifier();
         classifier.buildClassifier(4, 1000, 1);
-        getContentPane().setLayout(new GridLayout(1, 3));
+        getContentPane().setLayout(new GridLayout(1, 2, 2, 2));
         setSize(500, 500);
-        JPanel panel = new JPanel(new GridLayout(6,1,4,4));
-        JPanel description = new JPanel(new GridLayout(6,1,4,4));
-        final JPanel comps = new JPanel(new GridLayout(1, 15));
+        JPanel panel = new JPanel(new GridLayout(7, 1, 4, 4));
+        final JPanel description = new JPanel(new GridLayout(7, 1, 4, 4));
+        final JPanel comps = new JPanel(new GridLayout(1, 15, 4, 4));
         final JButton plus = new JButton("+");
         final JButton minus = new JButton("-");
         JTextField result = new JTextField();
@@ -56,7 +62,7 @@ public class AppForm extends JFrame {
         minus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JTextField field = competits.get(competits.size()-1);
+                JTextField field = competits.get(competits.size() - 1);
                 competits.remove(field);
                 field.setVisible(false);
                 field.removeAll();
@@ -69,6 +75,7 @@ public class AppForm extends JFrame {
         /** add left/right radioButtons */
         GridLayout lr = new GridLayout(1, 2);
         JPanel leftRight = new JPanel(lr);
+        leftRight.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         ButtonGroup buttonGroup = new ButtonGroup();
         left = new JRadioButton("Left-handed");
         right = new JRadioButton("Right-handed");
@@ -85,49 +92,105 @@ public class AppForm extends JFrame {
         panel.add(leftRight);
         /** add left/right radioButtons */
         /** add individual rating area */
-        individualRating = new JTextArea();
+        individualRating = new JTextField();
         individualRating.setVisible(true);
+        individualRating.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         panel.add(individualRating);
         /** add individual rating area */
         /** add team rating area */
-        teamRating = new JTextArea();
+        teamRating = new JTextField();
         teamRating.setVisible(true);
+        teamRating.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         panel.add(teamRating);
         /** add team rating area */
         /** add country area */
         String[] cs = getCountries();
         countries = new JComboBox(cs);
         countries.setVisible(true);
+        countries.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         panel.add(countries);
+        /** add country area */
+        /** add years*/
+        yearsOld = new JTextField();
+        yearsOld.setVisible(true);
+        yearsOld.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panel.add(yearsOld);
         /** add country area */
         /** add button */
         JButton go = new JButton("Прогноз");
         go.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    double mid = getMiddle();
+                    int years = Integer.parseInt(yearsOld.getText());
+                    int rating = Integer.parseInt(individualRating.getText());
+                    rating *= 10;
+                    int teamrating = Integer.parseInt(teamRating.getText());
+                    int country = ((String) countries.getSelectedItem()).hashCode();
+                    int leftr = left.isSelected() ? leftSel : rightSel;
+                    double place = classifier.classifySportsmen(years, mid, country, rating, leftr, teamrating) + 1;
+                    try {
+                        description.remove(message);
+                    } catch (Exception ex) {
 
+                    }
+                    message = new JLabel("Вероятнее всего, спортсмен займет место " + classToText((int) place) + ".");
+                    description.add(message);
+                    description.updateUI();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog((Component) e.getSource(), "Данные введены неверно. Проверьте, пожалуйста, ввод.");
+                }
             }
         });
         go.setVisible(true);
         panel.add(go);
         /** add button */
-        description.add(new JLabel(" - результаты"));
-        description.add(new JLabel(" - активная рука"));
-        description.add(new JLabel(" - индивидуальный рейтинг"));
-        description.add(new JLabel(" - командный рейтинг"));
-        description.add(new JLabel(" - страна"));
+        JLabel label1 = new JLabel(" - результаты");
+        //label1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        JLabel label2 = new JLabel(" - активная рука");
+        //label2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        JLabel label3 = new JLabel(" - индивидуальный рейтинг");
+        //label3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        JLabel label4 = new JLabel(" - командный рейтинг");
+        //label4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        JLabel label5 = new JLabel(" - страна");
+        JLabel label6 = new JLabel(" - возраст");
+        //label5.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        description.add(label1);
+        description.add(label2);
+        description.add(label3);
+        description.add(label4);
+        description.add(label5);
+        description.add(label6);
         JPanel res = new JPanel(new GridLayout(2, 1));
-        res.add(new JLabel("Результат: "));
+        //JLabel title = new JLabel("Результат");
+        //title.setHorizontalAlignment(JLabel.CENTER);
+        //res.add(title);
         predict = new JLabel("");
+        res.add(predict);
         add(panel);
         add(description);
+    }
+
+    private double getMiddle() {
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        for (int i = 0; i < competits.size(); i++) {
+            arrayList.add(Integer.parseInt(competits.get(i).getText()));
+        }
+        double mid = 0;
+        for (int i = 0; i < arrayList.size(); i++) {
+            mid += arrayList.get(i);
+        }
+        mid /= arrayList.size();
+        return mid;
     }
 
     private String[] getCountries() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("Data/Countries.txt"));
         String line;
         ArrayList<String> cs = new ArrayList<>();
-        while ((line = bufferedReader.readLine())!= null){
+        while ((line = bufferedReader.readLine()) != null) {
             cs.add(line);
         }
         String[] result = new String[cs.size()];
@@ -135,5 +198,22 @@ public class AppForm extends JFrame {
             result[i] = cs.get(i);
         }
         return result;
+    }
+
+    private String classToText(int clazz) {
+        switch (clazz) {
+            case 1:
+                return "c 1 по 8";
+            case 2:
+                return "c 9 по 16";
+            case 3:
+                return "c 17 по 32";
+            case 4:
+                return "c 33 по 64";
+            case 5:
+                return "выше 64";
+            default:
+                return "непонятно какое";
+        }
     }
 }

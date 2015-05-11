@@ -13,7 +13,8 @@ public class Sportsmen {
     private int rating;
     private int hand;
     private int countryRating;
-    public Sportsmen(String name, int place, double country){
+
+    public Sportsmen(String name, int place, double country) {
         this.name = name;
         this.results = new double[dimensions];
         i = 0;
@@ -25,13 +26,15 @@ public class Sportsmen {
         this.countryRating = countryRating;
     }
 
-    public void setHand(int hand){
+    public void setHand(int hand) {
         this.hand = hand;
     }
-    public void setRating(int pos){
+
+    public void setRating(int pos) {
         this.rating = pos;
     }
-    public Sportsmen(Sportsmen sportsmen){
+
+    public Sportsmen(Sportsmen sportsmen) {
         name = sportsmen.name;
         results = new double[dimensions];
         double[] oldVector = sportsmen.getResults();
@@ -41,33 +44,38 @@ public class Sportsmen {
         place = sportsmen.getPlace();
         i = dimensions;
     }
-    public void normalize(){
+
+    public void normalize() {
         double sum = 0;
         for (int j = 0; j < dimensions; j++) {
-            sum += results[j]* results[j];
+            sum += results[j] * results[j];
         }
         sum = Math.sqrt(sum);
         for (int j = 0; j < dimensions; j++) {
             results[j] /= sum;
         }
     }
-    public boolean ifFull(){
+
+    public boolean ifFull() {
         return i == dimensions;
     }
-    public void compareAndChangeClass(double place){
-        if (this.place != place){
+
+    public void compareAndChangeClass(double place) {
+        if (this.place != place) {
             this.place = -1;
-        }else {
+        } else {
             this.place = 1;
         }
     }
+
     public double[] getResults() {
         return results;
     }
-    public int defaultsNumber(){
+
+    public int defaultsNumber() {
         int c = 0;
         for (int j = 0; j < dimensions; j++) {
-            if (results[j] == defaultResult){
+            if (results[j] == defaultResult) {
                 c++;
             }
         }
@@ -85,82 +93,89 @@ public class Sportsmen {
     public void setPlace(int place) {
         this.place = place;
     }
-    public void pushResult(double result){
+
+    public void pushResult(double result) {
         if (i < results.length) {
             results[i] = result;
             i++;
         }
     }
-    public void setResults(){
+
+    public void setResults() {
         results[0] /= dimensions;
     }
-    public void setYearsOld(double yearsOld){
+
+    public void setYearsOld(double yearsOld) {
         results[i] = yearsOld;
         ++i;
     }
-    private void doThatResultsAreTrue(){
+
+    private void doThatResultsAreTrue() {
         int r = 0;
         int k = 0;
         for (int j = 0; j < dimensions; j++) {
-            if (results[j] != defaultResult){
+            if (results[j] != defaultResult) {
                 r += results[j];
                 k++;
             }
         }
         r /= k;
         for (int j = 0; j < dimensions; j++) {
-            if (results[j] == defaultResult){
-               results[j] = r;
+            if (results[j] == defaultResult) {
+                results[j] = r;
             }
         }
-        double[] temp = new double[dimensions-1];
+        double[] temp = new double[dimensions - 1];
         for (int j = 1; j < dimensions; j++) {
-            temp[j-1] = results[j];
+            temp[j - 1] = results[j];
         }
         Arrays.sort(temp);
         for (int j = 1; j < dimensions; j++) {
-            results[j] = temp[j-1];
+            results[j] = temp[j - 1];
         }
     }
-    public boolean checkCorrect(){
+
+    public boolean checkCorrect() {
         if (filterSmaller) {
             int sum = 0;
             for (int j = 1; j < dimensions; j++) {
                 sum += results[j];
             }
-            sum /= (dimensions-1);
+            sum /= (dimensions - 1);
             if (placeToClass(sum) > place) {
                 return false;
             }
         }
         return defaultsNumber() <= defaultsMax;
     }
-    private double getMean(){
+
+    private double getMean() {
         double mid = 0;
-        for (int j = 1; j < numberBests+1; j++) {
+        for (int j = 1; j < numberBests + 1; j++) {
             mid += results[j];
         }
-        mid = Math.pow(mid/numberBests, power);
+        mid = Math.pow(mid / numberBests, power);
         return mid;
     }
-    public String getText(){
+
+    public String getText() {
         doThatResultsAreTrue();
         String result = "";
         result += "'" + name + "',";
-        if (mean){
+        if (mean) {
             double mid = getMean();
             result += Double.toString(results[0]);
-            result+= ",";
+            result += ",";
             result += Double.toString(mid);
-            result+= ",";
-        }else if(bests) {
+            result += ",";
+        } else if (bests) {
             for (int j = 0; j < numberBests + 1; j++) {
-                result += Integer.toString((int)Math.pow(results[j], power)) + ",";
+                result += Integer.toString((int) Math.pow(results[j], power)) + ",";
             }
-        }else {
-            result += Integer.toString((int)Math.pow(results[0], power)) + ",";
-            for (int j = dimensions-1; j > dimensions-numberBests-1; j--) {
-                result += Integer.toString((int)Math.pow(results[j], power)) + ",";
+        } else {
+            result += Integer.toString((int) Math.pow(results[0], power)) + ",";
+            for (int j = dimensions - 1; j > dimensions - numberBests - 1; j--) {
+                result += Integer.toString((int) Math.pow(results[j], power)) + ",";
             }
         }
         if (addCountry) {
