@@ -1,8 +1,8 @@
-package ru.spbstu.neer2015.Data;
+package ru.spbstu.neer2015.data;
 
 import java.util.Arrays;
 
-import static ru.spbstu.neer2015.Data.Setter.*;
+import static ru.spbstu.neer2015.data.Setter.*;
 
 public class Sportsmen {
     private String name;

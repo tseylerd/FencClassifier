@@ -1,7 +1,7 @@
-package ru.spbstu.neer2015.Classifier;
+package ru.spbstu.neer2015.classifier;
 
-import ru.spbstu.neer2015.Data.Setter;
-import ru.spbstu.neer2015.Data.Generator;
+import ru.spbstu.neer2015.data.Setter;
+import ru.spbstu.neer2015.data.Generator;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.functions.supportVector.Kernel;
@@ -14,7 +14,7 @@ import weka.filters.unsupervised.instance.Normalize;
 import java.io.*;
 import java.util.Random;
 
-import static ru.spbstu.neer2015.Data.Setter.*;
+import static ru.spbstu.neer2015.data.Setter.*;
 
 /**
  * Created by tseyler on 11.03.15.

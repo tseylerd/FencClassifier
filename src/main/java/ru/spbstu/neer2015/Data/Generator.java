@@ -1,4 +1,4 @@
-package ru.spbstu.neer2015.Data;
+package ru.spbstu.neer2015.data;
 
 import java.io.*;
 import java.text.ParseException;
@@ -8,8 +8,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import static ru.spbstu.neer2015.Data.Setter.*;
-import static ru.spbstu.neer2015.Data.Setter.rating;
+import static ru.spbstu.neer2015.data.Setter.*;
+import static ru.spbstu.neer2015.data.Setter.rating;
 
 public class Generator {
     private ArrayList<Sportsmen> sportsmens;

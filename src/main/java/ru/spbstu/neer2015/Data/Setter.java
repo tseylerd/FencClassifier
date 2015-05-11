@@ -1,4 +1,4 @@
-package ru.spbstu.neer2015.Data;
+package ru.spbstu.neer2015.data;
 
 import weka.classifiers.functions.supportVector.Kernel;
 import weka.classifiers.functions.supportVector.NormalizedPolyKernel;

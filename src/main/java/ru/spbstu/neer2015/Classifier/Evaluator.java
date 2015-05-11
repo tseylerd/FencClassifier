@@ -1,5 +1,5 @@
-package ru.spbstu.neer2015.Classifier;
-import static ru.spbstu.neer2015.Data.Setter.*;
+package ru.spbstu.neer2015.classifier;
+import static ru.spbstu.neer2015.data.Setter.*;
 
 public class Evaluator {
     private int bestKernel;
