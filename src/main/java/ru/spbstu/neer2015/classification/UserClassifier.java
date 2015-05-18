@@ -38,10 +38,10 @@ public class UserClassifier {
         instance.setValue(5, hand);
         instance.setValue(6, teamRating);
         instance.setClassMissing();
-        Normalize normalize1 = new Normalize();
-        normalize1.setInputFormat(train);
-        normalize1.input(instance);
-        instance = normalize1.output();
+        Normalize normalize = new Normalize();
+        normalize.setInputFormat(train);
+        normalize.input(instance);
+        instance = normalize.output();
         double clazz = smo.classifyInstance(instance);
         return clazz;
     }
