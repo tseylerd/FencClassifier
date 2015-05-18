@@ -8,8 +8,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import static ru.spbstu.neer2015.data.Setter.*;
-import static ru.spbstu.neer2015.data.Setter.rating;
+import static ru.spbstu.neer2015.data.GeneratorSetter.*;
+import static ru.spbstu.neer2015.data.GeneratorSetter.rating;
 
 public class Generator {
     private ArrayList<Sportsmen> sportsmens;
@@ -53,13 +53,12 @@ public class Generator {
         sportsmens = new ArrayList<>();
         File file = new File(pathToResults);
         File[] files = file.listFiles();
-        int numberOfTrainingFolders = files.length + 1;
+        int numberOfTrainingFolders = files.length;
         for (int i = 1; i < numberOfTrainingFolders; i++) {
             extractFromFolder(Integer.toString(i) + "/");
         }
         filterSet();
     }
-
     public ArrayList<Sportsmen> getTrainSet() throws IOException {
         return sportsmens;
     }
@@ -199,7 +198,9 @@ public class Generator {
         if (addHand) {
             Integer hand = hands.get(sportsmen.getName());
             if (hand == null) {
-                hand = 5000;
+                hand = (leftSel + rightSel)/2;
+            }else {
+                hand = hand == 1 ? leftSel : rightSel;
             }
             sportsmen.setHand(hand);
         }
@@ -217,7 +218,7 @@ public class Generator {
             String date = line[4];
             String name = line[2];
             String country = line[3];
-            Sportsmen sportsmen = new Sportsmen(name, (int) placeToClass(place), getNumberOfCountry(country));
+            Sportsmen sportsmen = new Sportsmen(name, (int)place, getNumberOfCountry(country));
             sportsmen.setYearsOld(getYearsOld(date));
             addFinalRating(sportsmen, rat);
             addHand(sportsmen);
@@ -231,7 +232,16 @@ public class Generator {
             sportsmens.add(sportsmen);
         }
     }
-
+    private static int getClassesNumber() {
+        if (exponentClasses) {
+            return 6;
+        }
+        if (sayThatGood) {
+            return 2;
+        } else {
+            return 50;
+        }
+    }
     private void addResults(final HashMap<String, Sportsmen> hashMap, final String path, final String folder) throws FileNotFoundException {
         Scanner scanner = new Scanner(new FileReader(path));
         HashSet<String> hashSet = new HashSet<String>();

@@ -2,7 +2,7 @@ package ru.spbstu.neer2015.data;
 
 import java.util.Arrays;
 
-import static ru.spbstu.neer2015.data.Setter.*;
+import static ru.spbstu.neer2015.data.GeneratorSetter.*;
 
 public class Sportsmen {
     private String name;
@@ -18,7 +18,7 @@ public class Sportsmen {
         this.name = name;
         this.results = new double[dimensions];
         i = 0;
-        this.place = place;
+        this.place = placeToClass(place);
         this.country = country;
     }
 
@@ -134,7 +134,38 @@ public class Sportsmen {
             results[j] = temp[j - 1];
         }
     }
-
+    private static int placeToClass(final int place) {
+        if (sayThatGood) {
+            if (place < 17) {
+                return 1;
+            } else {
+                return 2;
+            }
+        }
+        if (exponentClasses) {
+            if (place >= 1 && place < 5) {
+                return 1;
+            }
+            if (place > 4 && place < 9) {
+                return 2;
+            }
+            if (place > 8 && place < 17) {
+                return 3;
+            }
+            if (place > 16 && place < 33) {
+                return 4;
+            }
+            if (place > 32 && place < 65) {
+                return 5;
+            }
+            return 6;
+        } else {
+            int result = place / 4;
+            if (result > maxClasses)
+                result = maxClasses;
+            return result;
+        }
+    }
     public boolean checkCorrect() {
         if (filterSmaller) {
             int sum = 0;
@@ -182,7 +213,7 @@ public class Sportsmen {
             result += Double.toString(country) + ",";
         }
         if (addRating) {
-            result += Integer.toString(rating) + ",";
+            result += Integer.toString(rating*2) + ",";
         }
         if (addHand) {
             result += Integer.toString(hand) + ",";
@@ -191,6 +222,7 @@ public class Sportsmen {
             result += Integer.toString(countryRating) + ",";
         }
         result += Integer.toString(place);
+        //result += "{" + Double.toString((double)(place)) + "}";
         return result;
     }
 }

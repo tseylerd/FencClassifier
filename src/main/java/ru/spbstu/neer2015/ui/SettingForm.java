@@ -1,4 +1,4 @@
-package ru.spbstu.neer2015.Interface;
+package ru.spbstu.neer2015.ui;
 
 import javax.swing.*;
 

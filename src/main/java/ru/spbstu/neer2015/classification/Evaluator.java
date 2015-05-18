@@ -1,28 +1,45 @@
-package ru.spbstu.neer2015.classifier;
+package ru.spbstu.neer2015.classification;
 
-import ru.spbstu.neer2015.data.Setter;
+import ru.spbstu.neer2015.data.EvaluationSetter;
+import ru.spbstu.neer2015.data.GeneratorSetter;
 
 public class Evaluator {
     private int bestKernel;
     private double bestParam;
     private double bestC;
     private double correct;
-    Setter setter;
+    private final EvaluationSetter setter;
+    private final boolean paramSet;
 
-    public Evaluator(Setter setter) {
+    public Evaluator(EvaluationSetter setter, boolean paramSet) {
         this.setter = setter;
+        this.paramSet = paramSet;
     }
 
+    private int getStartKernel(){
+        int result = 2;
+        if (!paramSet){
+            result +=3;
+        }
+        return result;
+    }
+    private int getEndKernel(){
+        int result = 4;
+        if (!paramSet){
+            result +=3;
+        }
+        return result;
+    }
     public void evaluate() throws Exception {
         double[] cParamGrid = getGrid(setter.getStartC(), setter.getStepC(), setter.getEndC());
         double[] kernelParamGrid = getGrid(setter.getStartKernel(), setter.getStepKernel(), setter.getEndKernel());
         int cLen = cParamGrid.length;
         int kLen = kernelParamGrid.length;
         correct = 0;
-        for (int i = 1; i < 4; i++) {
+        for (int i = getStartKernel(); i < getEndKernel(); i++) {
             for (int j = 0; j < cLen; j++) {
                 for (int k = 0; k < kLen; k++) {
-                    Classifier classifier = new Classifier();
+                    UserClassifier classifier = new UserClassifier();
                     classifier.buildClassifier(i, (int) cParamGrid[j], kernelParamGrid[k]);
                     double estimator = classifier.getEstimator();
                     System.out.println(getNowResults(cParamGrid[j], kernelParamGrid[k], i, estimator));
@@ -38,7 +55,11 @@ public class Evaluator {
         }
 
     }
-
+    public UserClassifier getBestClassifier() throws Exception{
+        UserClassifier classifier = new UserClassifier();
+        classifier.buildClassifier(bestKernel, (int)bestC, bestParam);
+        return classifier;
+    }
     public String getStringResults() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Best parametrs for classifier:\n");
@@ -76,18 +97,18 @@ public class Evaluator {
 
     private double[] getGrid(double start, double step, double end) {
         int steps = (int) Math.round((end - start) / step);
-        double[] grid = new double[steps];
+        double[] grid = new double[steps+1];
         double current = start;
-        for (int i = 0; i < steps; i++) {
-            grid[i] = current;
+        for (int i = -1; i < steps; i++) {
+            grid[i+1] = current;
             current += step;
         }
         return grid;
     }
 
     public static void main(String[] args) throws Exception {
-        Setter setter1 = new Setter(1, 100, 1, 1, 4, 0.01);
-        Evaluator evaluator = new Evaluator(setter1);
+        EvaluationSetter setter1 = new EvaluationSetter(200, 300, 1, 1, 1, 1);
+        Evaluator evaluator = new Evaluator(setter1, false);
         evaluator.evaluate();
         System.out.println(evaluator.getStringResults());
     }

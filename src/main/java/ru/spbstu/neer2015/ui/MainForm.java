@@ -1,4 +1,4 @@
-package ru.spbstu.neer2015.Interface;
+package ru.spbstu.neer2015.ui;
 
 /**
  * Created by tseyler on 11.05.15.

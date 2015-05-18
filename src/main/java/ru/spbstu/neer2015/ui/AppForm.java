@@ -1,8 +1,7 @@
-package ru.spbstu.neer2015.Interface;
+package ru.spbstu.neer2015.ui;
 
 
-import ru.spbstu.neer2015.classifier.Classifier;
-import weka.core.Instance;
+import ru.spbstu.neer2015.classification.UserClassifier;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,14 +12,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-import static ru.spbstu.neer2015.data.Setter.*;
+import static ru.spbstu.neer2015.data.GeneratorSetter.*;
 
 /**
  * Created by tseyler on 11.05.15.
  */
 public class AppForm extends JFrame {
     private ArrayList<JTextField> competits;
-    private Classifier classifier;
+    private UserClassifier classifier;
     private JLabel predict;
     private JRadioButton right;
     private JRadioButton left;
@@ -31,7 +30,7 @@ public class AppForm extends JFrame {
     private JLabel message;
 
     public AppForm() throws Exception {
-        classifier = new Classifier();
+        classifier = new UserClassifier();
         classifier.buildClassifier(4, 1000, 1);
         getContentPane().setLayout(new GridLayout(1, 2, 2, 2));
         setSize(500, 500);
