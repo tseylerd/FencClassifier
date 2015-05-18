@@ -214,11 +214,11 @@ public class Generator {
         HashMap<String, Integer> teamRat = getTeamRating(pathToFolder + teamRating);
         while (scanner.hasNext()) {
             String[] line = scanner.nextLine().split("\t");
-            double place = Integer.parseInt(line[0]);
+            int place = Integer.parseInt(line[0]);
             String date = line[4];
             String name = line[2];
             String country = line[3];
-            Sportsmen sportsmen = new Sportsmen(name, (int)place, getNumberOfCountry(country));
+            Sportsmen sportsmen = new Sportsmen(name, place, getNumberOfCountry(country));
             sportsmen.setYearsOld(getYearsOld(date));
             addFinalRating(sportsmen, rat);
             addHand(sportsmen);

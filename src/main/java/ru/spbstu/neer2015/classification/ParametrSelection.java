@@ -1,17 +1,16 @@
 package ru.spbstu.neer2015.classification;
 
-import ru.spbstu.neer2015.data.EvaluationSetter;
-import ru.spbstu.neer2015.data.GeneratorSetter;
+import ru.spbstu.neer2015.data.ParametrSelectionSetter;
 
-public class Evaluator {
+public class ParametrSelection {
     private int bestKernel;
     private double bestParam;
     private double bestC;
     private double correct;
-    private final EvaluationSetter setter;
+    private final ParametrSelectionSetter setter;
     private final boolean paramSet;
 
-    public Evaluator(EvaluationSetter setter, boolean paramSet) {
+    public ParametrSelection(ParametrSelectionSetter setter, boolean paramSet) {
         this.setter = setter;
         this.paramSet = paramSet;
     }
@@ -107,9 +106,9 @@ public class Evaluator {
     }
 
     public static void main(String[] args) throws Exception {
-        EvaluationSetter setter1 = new EvaluationSetter(200, 300, 1, 1, 1, 1);
-        Evaluator evaluator = new Evaluator(setter1, false);
-        evaluator.evaluate();
-        System.out.println(evaluator.getStringResults());
+        ParametrSelectionSetter setter1 = new ParametrSelectionSetter(200, 300, 1, 1, 1, 1);
+        ParametrSelection parametrSelection = new ParametrSelection(setter1, false);
+        parametrSelection.evaluate();
+        System.out.println(parametrSelection.getStringResults());
     }
 }

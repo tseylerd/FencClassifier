@@ -1,7 +1,7 @@
 package ru.spbstu.neer2015.classification;
 
 import ru.spbstu.neer2015.data.DataReader;
-import ru.spbstu.neer2015.data.EvaluationSetter;
+import ru.spbstu.neer2015.data.ParametrSelectionSetter;
 import ru.spbstu.neer2015.data.GeneratorSetter;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
@@ -17,8 +17,6 @@ import weka.filters.unsupervised.instance.Normalize;
 
 import java.io.*;
 import java.util.Random;
-
-import static ru.spbstu.neer2015.data.GeneratorSetter.*;
 
 /**
  * Created by tseyler on 11.03.15.
@@ -133,9 +131,9 @@ public class UserClassifier {
 /*        Generator generator = new Generator();
         generator.generateTrainSet();
         generator.saveSportsmens();*/
-        Evaluator evaluator = new Evaluator(new EvaluationSetter(200, 300, 1, 1, 1, 1), false);
-        evaluator.evaluate();
-        UserClassifier classifier1 = evaluator.getBestClassifier();
+        ParametrSelection parametrSelection = new ParametrSelection(new ParametrSelectionSetter(200, 300, 1, 1, 1, 1), false);
+        parametrSelection.evaluate();
+        UserClassifier classifier1 = parametrSelection.getBestClassifier();
         classifier1.crossValidateToConsole();
     }
 }

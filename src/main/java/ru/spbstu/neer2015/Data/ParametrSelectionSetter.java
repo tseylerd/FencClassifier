@@ -3,14 +3,14 @@ package ru.spbstu.neer2015.data;
 /**
  * Created by tseyler on 18.05.15.
  */
-public class EvaluationSetter {
+public class ParametrSelectionSetter {
     private double startC = 1;
     private double endC = 100;
     private double stepC = 1;
     private double startKernel = 1;
     private double endKernel = 4;
     private double stepKernel = 0.1;
-    public EvaluationSetter(double startC, double endC, double stepC, double startKernel, double endKernel, double stepKernel) {
+    public ParametrSelectionSetter(double startC, double endC, double stepC, double startKernel, double endKernel, double stepKernel) {
         this.startC = startC;
         this.endC = endC;
         this.stepC = stepC;
