@@ -16,7 +16,7 @@ public class ParametrSelection {
     }
 
     private int getStartKernel(){
-        int result = 2;
+        int result = 1;
         if (!paramSet){
             result +=3;
         }

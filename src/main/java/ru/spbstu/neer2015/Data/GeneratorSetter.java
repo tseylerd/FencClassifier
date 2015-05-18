@@ -13,6 +13,7 @@ public class GeneratorSetter {
     public final static String pathToHands = "Data/hands";
     public final static String rating = "rating";
     public final static String teamRating = "teamRating";
+    public final static String modelPath = "Data/model";
     public final static String world = "world";
     public final static int dimensions = 9;
     public final static int numberBests = 8;

@@ -17,7 +17,7 @@ import weka.filters.unsupervised.instance.Normalize;
 
 import java.io.*;
 import java.util.Random;
-
+import static ru.spbstu.neer2015.data.GeneratorSetter.*;
 /**
  * Created by tseyler on 11.03.15.
  */
@@ -92,6 +92,18 @@ public class UserClassifier {
         smo.setNumSubCmtys(6);
         smo.buildClassifier(train);
     }
+    public void saveModel() throws Exception {
+        ObjectOutputStream modelOS = new ObjectOutputStream(new FileOutputStream(modelPath));
+        modelOS.writeObject(smo);
+        modelOS.flush();
+        modelOS.close();
+    }
+    public void loadModel() throws Exception {
+        FileInputStream fis = new FileInputStream(modelPath);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        smo = (MultiBoostAB) ois.readObject();
+        ois.close();
+    }
     public void crossValidateToConsole() throws Exception {
         Evaluation evaluation = new Evaluation(train);
         evaluation.crossValidateModel(smo, train, 10, new Random(1));
@@ -128,11 +140,12 @@ public class UserClassifier {
     }
 
     public static void main(String[] args) throws Exception {
-/*        Generator generator = new Generator();
+/*      Generator generator = new Generator();
         generator.generateTrainSet();
         generator.saveSportsmens();*/
         ParametrSelection parametrSelection = new ParametrSelection(new ParametrSelectionSetter(200, 300, 1, 1, 1, 1), false);
         parametrSelection.evaluate();
+        System.out.print(parametrSelection.getStringResults());
         UserClassifier classifier1 = parametrSelection.getBestClassifier();
         classifier1.crossValidateToConsole();
     }
