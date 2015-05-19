@@ -14,6 +14,7 @@ public class MainForm extends JFrame {
     private JFrame set;
 
     public MainForm() throws IOException {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridLayout layout = new GridLayout(1, 2);
         setSize(400, 100);
         JButton setting = new JButton("Настройка");

@@ -15,6 +15,7 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
 import weka.filters.unsupervised.instance.Normalize;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.Random;
 import static ru.spbstu.neer2015.data.GeneratorSetter.*;
@@ -25,18 +26,17 @@ public class UserClassifier {
     private MultiBoostAB smo;
     private Instances train;
     public UserClassifier() throws Exception {
-        train = DataReader.getTrain();
+        train = new Instances(DataReader.getTrain());
     }
     public double classifySportsmen(int years, double mid, int country, int rating, int hand, int teamRating) throws Exception {
         Instance instance = new Instance(7);
         instance.setDataset(train);
-        instance.setValue(0, "Name");
-        instance.setValue(1, years);
-        instance.setValue(2, mid);
-        instance.setValue(3, country);
-        instance.setValue(4, rating);
-        instance.setValue(5, hand);
-        instance.setValue(6, teamRating);
+        instance.setValue(0, years);
+        instance.setValue(1, mid);
+        instance.setValue(2, country);
+        instance.setValue(3, rating);
+        instance.setValue(4, hand);
+        instance.setValue(5, teamRating);
         instance.setClassMissing();
         Normalize normalize = new Normalize();
         normalize.setInputFormat(train);
@@ -45,7 +45,7 @@ public class UserClassifier {
         double clazz = smo.classifyInstance(instance);
         return clazz;
     }
-    private Kernel getKernel(int type, double param) {
+    private Kernel getKernel(final int type, final double param) {
         switch (type) {
             case 1: {
                 PolyKernel polyKernel = new PolyKernel();
@@ -83,10 +83,6 @@ public class UserClassifier {
         Kernel kernel1 = getKernel(kernelType, param);
         smo1.setKernel(kernel1);
         smo1.setC(c);
-        Remove remove = new Remove();
-        remove.setAttributeIndices("1");
-        remove.setInputFormat(train);
-        train = Filter.useFilter(train, remove);
         smo = new MultiBoostAB();
         smo.setClassifier(smo1);
         smo.setNumSubCmtys(6);
@@ -144,7 +140,7 @@ public class UserClassifier {
         generator.generateTrainSet();
         generator.saveSportsmens();*/
         ParametrSelection parametrSelection = new ParametrSelection(new ParametrSelectionSetter(200, 300, 1, 1, 1, 1), false);
-        parametrSelection.evaluate();
+        parametrSelection.evaluate(new JProgressBar(), new JTextPane());
         System.out.print(parametrSelection.getStringResults());
         UserClassifier classifier1 = parametrSelection.getBestClassifier();
         classifier1.crossValidateToConsole();

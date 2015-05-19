@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,8 +32,10 @@ public class AppForm extends JFrame {
     private JLabel message;
 
     public AppForm() throws Exception {
+        super();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         classifier = new UserClassifier();
-        classifier.buildClassifier(4, 1000, 1);
+        classifier.loadModel();
         getContentPane().setLayout(new GridLayout(1, 2, 2, 2));
         setSize(500, 500);
         JPanel panel = new JPanel(new GridLayout(7, 1, 4, 4));
@@ -138,6 +142,7 @@ public class AppForm extends JFrame {
                     description.add(message);
                     description.updateUI();
                 } catch (Exception ex) {
+                    ex.printStackTrace();
                     JOptionPane.showMessageDialog((Component) e.getSource(), "Данные введены неверно. Проверьте, пожалуйста, ввод.");
                 }
             }
@@ -146,16 +151,11 @@ public class AppForm extends JFrame {
         panel.add(go);
         /** add button */
         JLabel label1 = new JLabel(" - результаты");
-        //label1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         JLabel label2 = new JLabel(" - активная рука");
-        //label2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         JLabel label3 = new JLabel(" - индивидуальный рейтинг");
-        //label3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         JLabel label4 = new JLabel(" - командный рейтинг");
-        //label4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         JLabel label5 = new JLabel(" - страна");
         JLabel label6 = new JLabel(" - возраст");
-        //label5.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         description.add(label1);
         description.add(label2);
         description.add(label3);
@@ -163,9 +163,6 @@ public class AppForm extends JFrame {
         description.add(label5);
         description.add(label6);
         JPanel res = new JPanel(new GridLayout(2, 1));
-        //JLabel title = new JLabel("Результат");
-        //title.setHorizontalAlignment(JLabel.CENTER);
-        //res.add(title);
         predict = new JLabel("");
         res.add(predict);
         add(panel);
@@ -202,14 +199,16 @@ public class AppForm extends JFrame {
     private String classToText(int clazz) {
         switch (clazz) {
             case 1:
-                return "c 1 по 8";
+                return "c 1 по 4";
             case 2:
-                return "c 9 по 16";
+                return "c 5 по 8";
             case 3:
-                return "c 17 по 32";
+                return "c 9 по 16";
             case 4:
-                return "c 33 по 64";
+                return "c 17 по 32";
             case 5:
+                return "с 33 по 64";
+            case 6:
                 return "выше 64";
             default:
                 return "непонятно какое";

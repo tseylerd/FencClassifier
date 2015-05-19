@@ -2,6 +2,7 @@ package ru.spbstu.neer2015.data;
 
 import weka.core.Instances;
 import weka.filters.Filter;
+import weka.filters.unsupervised.attribute.Remove;
 import weka.filters.unsupervised.instance.Normalize;
 
 import java.io.BufferedReader;
@@ -22,8 +23,12 @@ public class DataReader {
                 Normalize normalize = new Normalize();
                 normalize.setInputFormat(train);
                 train = Filter.useFilter(train, normalize);
-                train.setClassIndex(train.numAttributes() - 1);
             }
+            Remove remove = new Remove();
+            remove.setAttributeIndices("1");
+            remove.setInputFormat(train);
+            train = Filter.useFilter(train, remove);
+            train.setClassIndex(train.numAttributes() - 1);
         }catch (Exception e){
             System.out.print("Data error.");
         }

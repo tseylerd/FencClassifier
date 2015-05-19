@@ -1,6 +1,6 @@
 package ru.spbstu.neer2015.data;
 
-public class GeneratorSetter {
+public final class GeneratorSetter {
     public final static boolean yearsOld = true;
     public final static boolean addCountry = true;
     public final static boolean addCountryRating = true;
