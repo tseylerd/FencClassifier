@@ -1,34 +1,48 @@
 package ru.spbstu.neer2015.classification;
 
 import ru.spbstu.neer2015.data.DataReader;
-import ru.spbstu.neer2015.data.ParametrSelectionSetter;
 import ru.spbstu.neer2015.data.GeneratorSetter;
+import ru.spbstu.neer2015.data.ParametrSelectionSetter;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.functions.supportVector.Kernel;
 import weka.classifiers.functions.supportVector.NormalizedPolyKernel;
 import weka.classifiers.functions.supportVector.PolyKernel;
 import weka.classifiers.functions.supportVector.RBFKernel;
-import weka.classifiers.meta.*;
-import weka.core.*;
-import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.Remove;
+import weka.classifiers.meta.MultiBoostAB;
+import weka.core.Instance;
+import weka.core.Instances;
 import weka.filters.unsupervised.instance.Normalize;
 
 import javax.swing.*;
 import java.io.*;
 import java.util.Random;
-import static ru.spbstu.neer2015.data.GeneratorSetter.*;
+
+import static ru.spbstu.neer2015.data.GeneratorSetter.modelPath;
+
 /**
  * Created by tseyler on 11.03.15.
  */
 public class UserClassifier {
     private MultiBoostAB smo;
     private Instances train;
+
     public UserClassifier() throws Exception {
         train = new Instances(DataReader.getTrain());
     }
-    public double classifySportsmen(int years, double mid, int country, int rating, int hand, int teamRating) throws Exception {
+
+    public static void main(String[] args) throws Exception {
+/*      Generator generator = new Generator();
+        generator.generateTrainSet();
+        generator.saveSportsmens();*/
+        ParametrSelection parametrSelection = new ParametrSelection(new ParametrSelectionSetter(200, 300, 1, 1, 1, 1), false);
+        parametrSelection.evaluate(new JProgressBar(), new JTextPane());
+        System.out.print(parametrSelection.getStringResults());
+        UserClassifier classifier1 = parametrSelection.getBestClassifier();
+        classifier1.crossValidateToConsole();
+    }
+
+    public int classifySportsmen(int years, double mid, int country, int rating, int hand, int teamRating) throws Exception {
         Instance instance = new Instance(7);
         instance.setDataset(train);
         instance.setValue(0, years);
@@ -42,9 +56,10 @@ public class UserClassifier {
         normalize.setInputFormat(train);
         normalize.input(instance);
         instance = normalize.output();
-        double clazz = smo.classifyInstance(instance);
+        int clazz = (int) smo.classifyInstance(instance);
         return clazz;
     }
+
     private Kernel getKernel(final int type, final double param) {
         switch (type) {
             case 1: {
@@ -78,6 +93,7 @@ public class UserClassifier {
                 return new PolyKernel();
         }
     }
+
     public void buildClassifier(final int kernelType, final int c, double param) throws Exception {
         SMO smo1 = new SMO();
         Kernel kernel1 = getKernel(kernelType, param);
@@ -88,18 +104,21 @@ public class UserClassifier {
         smo.setNumSubCmtys(6);
         smo.buildClassifier(train);
     }
+
     public void saveModel() throws Exception {
         ObjectOutputStream modelOS = new ObjectOutputStream(new FileOutputStream(modelPath));
         modelOS.writeObject(smo);
         modelOS.flush();
         modelOS.close();
     }
+
     public void loadModel() throws Exception {
         FileInputStream fis = new FileInputStream(modelPath);
         ObjectInputStream ois = new ObjectInputStream(fis);
         smo = (MultiBoostAB) ois.readObject();
         ois.close();
     }
+
     public void crossValidateToConsole() throws Exception {
         Evaluation evaluation = new Evaluation(train);
         evaluation.crossValidateModel(smo, train, 10, new Random(1));
@@ -133,16 +152,5 @@ public class UserClassifier {
 
     public void finalize() {
         train.delete();
-    }
-
-    public static void main(String[] args) throws Exception {
-/*      Generator generator = new Generator();
-        generator.generateTrainSet();
-        generator.saveSportsmens();*/
-        ParametrSelection parametrSelection = new ParametrSelection(new ParametrSelectionSetter(200, 300, 1, 1, 1, 1), false);
-        parametrSelection.evaluate(new JProgressBar(), new JTextPane());
-        System.out.print(parametrSelection.getStringResults());
-        UserClassifier classifier1 = parametrSelection.getBestClassifier();
-        classifier1.crossValidateToConsole();
     }
 }

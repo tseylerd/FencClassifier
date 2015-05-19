@@ -5,32 +5,41 @@ import ru.spbstu.neer2015.data.ParametrSelectionSetter;
 import javax.swing.*;
 
 public class ParametrSelection {
+    private final ParametrSelectionSetter setter;
+    private final boolean paramSet;
     private int bestKernel;
     private double bestParam;
     private double bestC;
     private double correct;
-    private final ParametrSelectionSetter setter;
-    private final boolean paramSet;
 
     public ParametrSelection(ParametrSelectionSetter setter, boolean paramSet) {
         this.setter = setter;
         this.paramSet = paramSet;
     }
 
-    private int getStartKernel(){
+    public static void main(String[] args) throws Exception {
+        ParametrSelectionSetter setter1 = new ParametrSelectionSetter(200, 300, 1, 1, 1, 1);
+        ParametrSelection parametrSelection = new ParametrSelection(setter1, false);
+        parametrSelection.evaluate(new JProgressBar(), new JTextPane());
+        System.out.println(parametrSelection.getStringResults());
+    }
+
+    private int getStartKernel() {
         int result = 1;
-        if (!paramSet){
-            result +=3;
+        if (!paramSet) {
+            result += 3;
         }
         return result;
     }
-    private int getEndKernel(){
+
+    private int getEndKernel() {
         int result = 4;
-        if (!paramSet){
-            result +=3;
+        if (!paramSet) {
+            result += 3;
         }
         return result;
     }
+
     public void evaluate(JProgressBar progressBar, JTextPane label) throws Exception {
         double[] cParamGrid = getGrid(setter.getStartC(), setter.getStepC(), setter.getEndC());
         double[] kernelParamGrid = getGrid(setter.getStartKernel(), setter.getStepKernel(), setter.getEndKernel());
@@ -38,7 +47,7 @@ public class ParametrSelection {
         int kLen = kernelParamGrid.length;
         progressBar.setValue(0);
         correct = 0;
-        int count = (getEndKernel() - getStartKernel())*cLen*kLen;
+        int count = (getEndKernel() - getStartKernel()) * cLen * kLen;
         progressBar.setMinimum(0);
         progressBar.setMaximum(count);
         for (int i = getStartKernel(); i < getEndKernel(); i++) {
@@ -54,17 +63,19 @@ public class ParametrSelection {
                         bestParam = kernelParamGrid[k];
                         bestC = cParamGrid[j];
                     }
-                    progressBar.setValue(progressBar.getValue()+1);
+                    progressBar.setValue(progressBar.getValue() + 1);
                 }
             }
         }
 
     }
-    public UserClassifier getBestClassifier() throws Exception{
+
+    public UserClassifier getBestClassifier() throws Exception {
         UserClassifier classifier = new UserClassifier();
-        classifier.buildClassifier(bestKernel, (int)bestC, bestParam);
+        classifier.buildClassifier(bestKernel, (int) bestC, bestParam);
         return classifier;
     }
+
     public String getStringResults() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Best parametrs for classifier:\n");
@@ -102,19 +113,12 @@ public class ParametrSelection {
 
     private double[] getGrid(double start, double step, double end) {
         int steps = (int) Math.round((end - start) / step);
-        double[] grid = new double[steps+1];
+        double[] grid = new double[steps + 1];
         double current = start;
         for (int i = -1; i < steps; i++) {
-            grid[i+1] = current;
+            grid[i + 1] = current;
             current += step;
         }
         return grid;
-    }
-
-    public static void main(String[] args) throws Exception {
-        ParametrSelectionSetter setter1 = new ParametrSelectionSetter(200, 300, 1, 1, 1, 1);
-        ParametrSelection parametrSelection = new ParametrSelection(setter1, false);
-        parametrSelection.evaluate(new JProgressBar(), new JTextPane());
-        System.out.println(parametrSelection.getStringResults());
     }
 }

@@ -1,8 +1,5 @@
 package ru.spbstu.neer2015.ui;
 
-import ru.spbstu.neer2015.classification.ParametrSelection;
-import ru.spbstu.neer2015.data.ParametrSelectionSetter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,111 +12,108 @@ import java.util.ArrayList;
 public class SettingForm extends JFrame {
     private JTextField[] jTextFields;
     private JTextField[] jTextFieldsP;
-    JLabel[] jLabels;
-    JLabel[] jLabelsP;
-    JProgressBar progressBar;
-    ArrayList<Thread> threads;
-    public SettingForm(){
+    private JLabel[] jLabels;
+    private JLabel[] jLabelsP;
+    private JTextPane forCurRes;
+    private JTextPane forFinalRes;
+    private JProgressBar progressBar;
+    private ArrayList<Thread> threads;
+    private Runnable action;
+    private JFrame back;
+    private JButton backButton;
+    private JButton set;
+    private Controller controller;
+
+    public SettingForm(final JFrame back) throws Exception {
         super();
+        this.back = back;
+        initComponents();
+        componeComponents();
+        setActions();
+    }
+
+    private void initComponents() throws Exception {
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(7, 1, 4, 4));
-        JPanel panelForCLabels = new JPanel();
-        GridLayout gridForCLabels = new GridLayout(1,3,4,4);
-        panelForCLabels.setLayout(gridForCLabels);
+        backButton = new JButton("Назад");
+        set = new JButton("Настроить");
         jLabels = new JLabel[3];
-        jLabels[0] = new JLabel("Начальное значение C");
-        jLabels[1] = new JLabel("Конечное значение C");
-        jLabels[2] = new JLabel("Шаг");
-        for (JLabel label : jLabels){
-            label.setVisible(true);
-            panelForCLabels.add(label);
-        }
-        add(panelForCLabels);
-        JPanel panelForCFields = new JPanel();
-        GridLayout gridForCFields = new GridLayout(1,3,4,4);
-        panelForCFields.setLayout(gridForCFields);
-        jTextFields = new JTextField[3];
-        for (int i = 0; i < 3; i++) {
-            jTextFields[i] = new JTextField();
-            jTextFields[i].setVisible(true);
-            panelForCFields.add(jTextFields[i]);
-        }
-        add(panelForCFields);
-        JPanel panelForPLabels = new JPanel();
-        GridLayout gridForPLabels = new GridLayout(1,3,4,4);
-        panelForPLabels.setLayout(gridForPLabels);
         jLabelsP = new JLabel[3];
-        jLabelsP[0] = new JLabel("Начальное значение параметра");
-        jLabelsP[1] = new JLabel("Конечное значение параметра");
-        jLabelsP[2] = new JLabel("Шаг");
-        for (JLabel label : jLabelsP){
-            label.setVisible(true);
-            panelForPLabels.add(label);
-        }
-        add(panelForPLabels);
-        JPanel panelForPFields = new JPanel();
-        GridLayout gridForPFields = new GridLayout(1,3,4,4);
-        panelForPFields.setLayout(gridForPFields);
+        jTextFields = new JTextField[3];
         jTextFieldsP = new JTextField[3];
+        forCurRes = new JTextPane();
+        forCurRes.setEditable(false);
+        forFinalRes = new JTextPane();
+        forFinalRes.setEditable(false);
+        String[] texts = new String[]{"Начальное значение ", "Конечное значение ", "Шаг "};
         for (int i = 0; i < 3; i++) {
-            jTextFieldsP[i] = new JTextField();
-            jTextFieldsP[i].setVisible(true);
-            panelForPFields.add(jTextFieldsP[i]);
+            String cText = new String(texts[i] + "C");
+            String pText = new String(texts[i] + "параметра");
+            jLabels[i] = new JLabel(cText);
+            jLabelsP[i] = new JLabel(pText);
+            jTextFields[i] = new JTextField(cText);
+            jTextFieldsP[i] = new JTextField(pText);
         }
-        add(panelForPFields);
         progressBar = new JProgressBar();
-        add(progressBar);
-        progressBar.setVisible(true);
-        JPanel last = new JPanel(new GridLayout(1,2,4,4));
-        final JTextPane label = new JTextPane();
-        JButton go = new JButton("Настроить");
         threads = new ArrayList<>();
-        final JTextPane textPane = new JTextPane();
-        go.addActionListener(new ActionListener() {
+        controller = new Controller();
+        action = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    controller.setBestClassifier(jTextFields[0].getText(), jTextFields[1].getText(), jTextFields[2].getText(), jTextFieldsP[0].getText(), jTextFieldsP[1].getText(), jTextFieldsP[2].getText(), progressBar, forCurRes, forFinalRes);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+    }
+
+    private void componeComponents() {
+        JPanel forC = new MyJPanel();
+        JPanel forCLabels = new JPanel(new GridLayout(1, 3, 4, 4));
+        JPanel forP = new MyJPanel();
+        JPanel forPLabels = new JPanel(new GridLayout(1, 3, 4, 4));
+        JPanel forButtonAndRes1 = new MyJPanel();
+        JPanel forButtonAndRes2 = new MyJPanel();
+        for (int i = 0; i < 3; i++) {
+            forCLabels.add(jLabels[i]);
+            forPLabels.add(jLabelsP[i]);
+            forC.add(jTextFields[i]);
+            forP.add(jTextFieldsP[i]);
+        }
+        forButtonAndRes1.add(set);
+        forButtonAndRes1.add(forCurRes);
+        forButtonAndRes2.add(backButton);
+        forButtonAndRes2.add(forFinalRes);
+        add(forCLabels);
+        add(forC);
+        add(forPLabels);
+        add(forP);
+        add(progressBar);
+        add(forButtonAndRes1);
+        add(forButtonAndRes2);
+    }
+
+    private void setActions() {
+        set.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    final int startC = Integer.parseInt(jTextFields[0].getText());
-                    final int endC = Integer.parseInt(jTextFields[1].getText());
-                    final int stepC = Integer.parseInt(jTextFields[2].getText());
-                    final double startP = Double.parseDouble(jTextFieldsP[0].getText());
-                    final double endP = Double.parseDouble(jTextFieldsP[1].getText());
-                    final double stepP = Double.parseDouble(jTextFieldsP[2].getText());
-                    if ((threads.size() == 0) || !threads.get(threads.size()-1).isAlive()) {
-                        Thread thread = new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    ParametrSelectionSetter parametrSelectionSetter = new ParametrSelectionSetter(startC, endC, stepC, startP, endP, stepP);
-                                    ParametrSelection parametrSelection = new ParametrSelection(parametrSelectionSetter, true);
-                                    parametrSelection.evaluate(progressBar, label);
-                                    parametrSelection.getBestClassifier().saveModel();
-                                    textPane.setText(parametrSelection.getStringResults());
-                                    progressBar.setValue(0);
-                                } catch (Exception ex) {
-                                    ex.printStackTrace();
-                                }
-                            }
-                        });
-                        threads.add(thread);
-                        thread.start();
-
-                    }else {
-                        JOptionPane.showMessageDialog((Component) e.getSource(), "Подождите, настройка не завершена");
-                    }
-                }catch (Exception ex){
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog((Component) e.getSource(), "Данные введены неверно. Проверьте, пожалуйста, ввод.");
+                if (threads.size() == 0 || !threads.get(threads.size() - 1).isAlive()) {
+                    Thread thread = new Thread(action);
+                    thread.start();
+                } else {
+                    JOptionPane.showMessageDialog((Component) e.getSource(), "Подождите, настройка не завершена");
                 }
             }
         });
-        go.setVisible(true);
-        last.add(go);
-        label.setVisible(true);
-        last.add(label);
-        add(last);
-        textPane.setVisible(true);
-        add(textPane);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                back.setVisible(true);
+            }
+        });
     }
 }

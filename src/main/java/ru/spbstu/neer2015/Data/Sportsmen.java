@@ -22,6 +22,50 @@ public class Sportsmen {
         this.country = country;
     }
 
+    public Sportsmen(Sportsmen sportsmen) {
+        name = sportsmen.name;
+        results = new double[dimensions];
+        double[] oldVector = sportsmen.getResults();
+        for (int j = 0; j < dimensions; j++) {
+            results[j] = oldVector[j];
+        }
+        place = sportsmen.getPlace();
+        i = dimensions;
+    }
+
+    private static int placeToClass(final int place) {
+        if (sayThatGood) {
+            if (place < 17) {
+                return 1;
+            } else {
+                return 2;
+            }
+        }
+        if (exponentClasses) {
+            if (place >= 1 && place < 5) {
+                return 1;
+            }
+            if (place > 4 && place < 9) {
+                return 2;
+            }
+            if (place > 8 && place < 17) {
+                return 3;
+            }
+            if (place > 16 && place < 33) {
+                return 4;
+            }
+            if (place > 32 && place < 65) {
+                return 5;
+            }
+            return 6;
+        } else {
+            int result = place / 4;
+            if (result > maxClasses)
+                result = maxClasses;
+            return result;
+        }
+    }
+
     public void setCountryRating(int countryRating) {
         this.countryRating = countryRating;
     }
@@ -32,17 +76,6 @@ public class Sportsmen {
 
     public void setRating(int pos) {
         this.rating = pos;
-    }
-
-    public Sportsmen(Sportsmen sportsmen) {
-        name = sportsmen.name;
-        results = new double[dimensions];
-        double[] oldVector = sportsmen.getResults();
-        for (int j = 0; j < dimensions; j++) {
-            results[j] = oldVector[j];
-        }
-        place = sportsmen.getPlace();
-        i = dimensions;
     }
 
     public void normalize() {
@@ -134,38 +167,7 @@ public class Sportsmen {
             results[j] = temp[j - 1];
         }
     }
-    private static int placeToClass(final int place) {
-        if (sayThatGood) {
-            if (place < 17) {
-                return 1;
-            } else {
-                return 2;
-            }
-        }
-        if (exponentClasses) {
-            if (place >= 1 && place < 5) {
-                return 1;
-            }
-            if (place > 4 && place < 9) {
-                return 2;
-            }
-            if (place > 8 && place < 17) {
-                return 3;
-            }
-            if (place > 16 && place < 33) {
-                return 4;
-            }
-            if (place > 32 && place < 65) {
-                return 5;
-            }
-            return 6;
-        } else {
-            int result = place / 4;
-            if (result > maxClasses)
-                result = maxClasses;
-            return result;
-        }
-    }
+
     public boolean checkCorrect() {
         if (filterSmaller) {
             int sum = 0;
@@ -213,7 +215,7 @@ public class Sportsmen {
             result += Double.toString(country) + ",";
         }
         if (addRating) {
-            result += Integer.toString(rating*2) + ",";
+            result += Integer.toString(rating * 2) + ",";
         }
         if (addHand) {
             result += Integer.toString(hand) + ",";

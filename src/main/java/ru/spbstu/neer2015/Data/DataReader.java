@@ -14,9 +14,10 @@ import static ru.spbstu.neer2015.data.GeneratorSetter.pathToTrainSet;
  * Created by tseyler on 18.05.15.
  */
 public class DataReader {
-    Instances train;
     private static DataReader data = new DataReader();
-    public DataReader(){
+    Instances train;
+
+    public DataReader() {
         try {
             train = new Instances(new BufferedReader(new FileReader(pathToTrainSet)));
             if (GeneratorSetter.normalize) {
@@ -29,10 +30,11 @@ public class DataReader {
             remove.setInputFormat(train);
             train = Filter.useFilter(train, remove);
             train.setClassIndex(train.numAttributes() - 1);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.print("Data error.");
         }
     }
+
     public static Instances getTrain() {
         return data.train;
     }

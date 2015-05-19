@@ -10,7 +10,8 @@ public class ParametrSelectionSetter {
     private double startKernel = 1;
     private double endKernel = 4;
     private double stepKernel = 0.1;
-    public ParametrSelectionSetter( int startC, int  endC, int stepC, double startKernel, double endKernel, double stepKernel) {
+
+    public ParametrSelectionSetter(int startC, int endC, int stepC, double startKernel, double endKernel, double stepKernel) {
         this.startC = startC;
         this.endC = endC;
         this.stepC = stepC;
@@ -18,6 +19,7 @@ public class ParametrSelectionSetter {
         this.startKernel = startKernel;
         this.endKernel = endKernel;
     }
+
     public double getStartC() {
         return startC;
     }

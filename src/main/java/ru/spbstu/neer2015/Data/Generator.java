@@ -2,14 +2,9 @@ package ru.spbstu.neer2015.data;
 
 import java.io.*;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 import static ru.spbstu.neer2015.data.GeneratorSetter.*;
-import static ru.spbstu.neer2015.data.GeneratorSetter.rating;
 
 public class Generator {
     private ArrayList<Sportsmen> sportsmens;
@@ -37,6 +32,37 @@ public class Generator {
         }
     }
 
+    private static int getClassesNumber() {
+        if (exponentClasses) {
+            return 6;
+        }
+        if (sayThatGood) {
+            return 2;
+        } else {
+            return 50;
+        }
+    }
+
+    public static String[] getCountries() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(countiesPath));
+        String line;
+        ArrayList<String> cs = new ArrayList<>();
+        while ((line = bufferedReader.readLine()) != null) {
+            cs.add(line);
+        }
+        String[] result = new String[cs.size()];
+        for (int i = 0; i < cs.size(); i++) {
+            result[i] = cs.get(i);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) throws Exception {
+        Generator generator = new Generator();
+        generator.generateTrainSet();
+        generator.saveSportsmens();
+    }
+
     private void filterSet() {
         HashSet<Sportsmen> setFiltered = new HashSet<Sportsmen>();
         for (Sportsmen sportsmen : sportsmens) {
@@ -59,6 +85,7 @@ public class Generator {
         }
         filterSet();
     }
+
     public ArrayList<Sportsmen> getTrainSet() throws IOException {
         return sportsmens;
     }
@@ -198,8 +225,8 @@ public class Generator {
         if (addHand) {
             Integer hand = hands.get(sportsmen.getName());
             if (hand == null) {
-                hand = (leftSel + rightSel)/2;
-            }else {
+                hand = (leftSel + rightSel) / 2;
+            } else {
                 hand = hand == 1 ? leftSel : rightSel;
             }
             sportsmen.setHand(hand);
@@ -232,16 +259,7 @@ public class Generator {
             sportsmens.add(sportsmen);
         }
     }
-    private static int getClassesNumber() {
-        if (exponentClasses) {
-            return 6;
-        }
-        if (sayThatGood) {
-            return 2;
-        } else {
-            return 50;
-        }
-    }
+
     private void addResults(final HashMap<String, Sportsmen> hashMap, final String path, final String folder) throws FileNotFoundException {
         Scanner scanner = new Scanner(new FileReader(path));
         HashSet<String> hashSet = new HashSet<String>();
@@ -261,11 +279,5 @@ public class Generator {
                 sportsmen.pushResult(defaultResult);
             }
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        Generator generator = new Generator();
-        generator.generateTrainSet();
-        generator.saveSportsmens();
     }
 }

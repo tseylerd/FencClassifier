@@ -7,47 +7,52 @@ package ru.spbstu.neer2015.ui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 
 public class MainForm extends JFrame {
     private JFrame app;
     private JFrame set;
+    private JButton openSeter;
+    private JButton openPredictor;
 
-    public MainForm() throws IOException {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        GridLayout layout = new GridLayout(1, 2);
+    public MainForm() throws Exception {
         setSize(400, 100);
-        JButton setting = new JButton("Настройка");
-        setting.setVisible(true);
-        getContentPane().setLayout(layout);
-        add(setting);
-        JButton run = new JButton("Прогнозирование");
-        run.setVisible(true);
-        add(run);
-        setting.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                app = new SettingForm();
-                app.setVisible(true);
-                setVisible(false);
-            }
-        });
-        run.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    set = new AppForm();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                set.setVisible(true);
-                setVisible(false);
-            }
-        });
+        initComponents();
+        componeLayout();
+        setVisible(true);
     }
 
     public static void main(String[] args) throws Exception {
         MainForm m = new MainForm();
         m.setVisible(true);
+    }
+
+    private void initComponents() throws Exception {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        app = new SettingForm(this);
+        set = new AppForm(this);
+        set.setVisible(false);
+        app.setVisible(false);
+        openSeter = new JButton("Настройка");
+        openPredictor = new JButton("Прогнозирование");
+        openSeter.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                app.setVisible(true);
+            }
+        });
+        openPredictor.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                set.setVisible(true);
+            }
+        });
+    }
+
+    private void componeLayout() {
+        setLayout(new GridLayout(1, 2, 4, 4));
+        add(openSeter);
+        add(openPredictor);
     }
 }
