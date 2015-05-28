@@ -33,7 +33,7 @@ public class UserClassifier {
         System.out.print(parametrSelection.getStringResults());
         UserClassifier classifier1 = parametrSelection.getBestClassifier();*/
         UserClassifier classifier1 = new UserClassifier();
-        classifier1.buildClassifier(2, 1000, 2);
+        classifier1.buildClassifier(2, 500, 3);
         classifier1.crossValidateToConsole();
     }
 
@@ -49,7 +49,7 @@ public class UserClassifier {
 
     public void buildClassifier(final int kernelType, final int c, double param) throws Exception {
         SMO smo1 = new SMO();
-        Kernel kernel1 = MyKernel.getWekaKernel(kernelType, param);
+        Kernel kernel1 = MyKernel.getMyKernel(kernelType).getKernel(param);
         smo1.setKernel(kernel1);
         smo1.setC(c);
         multiBoostAB = new MultiBoostAB();

@@ -21,23 +21,14 @@ public class ParametrSelection {
         ParametrSelectionSetter setter1 = new ParametrSelectionSetter(200, 300, 1, 1, 1, 1);
         ParametrSelection parametrSelection = new ParametrSelection(setter1, false);
         parametrSelection.evaluate(new JProgressBar(), new JTextPane());
-        System.out.println(parametrSelection.getStringResults());
     }
 
     private int getStartKernel() {
-        int result = 1;
-        if (!paramSet) {
-            result += 3;
-        }
-        return result;
+        return 1;
     }
 
     private int getEndKernel() {
-        int result = 4;
-        if (!paramSet) {
-            result += 3;
-        }
-        return result;
+        return 4;
     }
 
     public void evaluate(JProgressBar progressBar, JTextPane label) throws Exception {
@@ -56,7 +47,7 @@ public class ParametrSelection {
                     UserClassifier classifier = new UserClassifier();
                     classifier.buildClassifier(i, (int) cParamGrid[j], kernelParamGrid[k]);
                     double estimator = classifier.getEstimator();
-                    label.setText(getNowResults(cParamGrid[j], kernelParamGrid[k], i, estimator));
+                    label.setText(getStringResults((int)cParamGrid[j], kernelParamGrid[k], i, estimator));
                     if (estimator > correct) {
                         correct = estimator;
                         bestKernel = i;
@@ -76,38 +67,14 @@ public class ParametrSelection {
         return classifier;
     }
 
-    public String getStringResults() {
+    public String getStringResults(int c, double param, int kernel, double correct) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Best parametrs for classifier:\n");
-        stringBuilder.append("\tC: " + Double.toString(bestC) + "\n");
-        stringBuilder.append("\tKernel parametr: " + Double.toString(bestParam) + "\n");
-        stringBuilder.append("\tKernel: ");
-        if (bestKernel == 1) {
-            stringBuilder.append("polynomial kernel\n");
-        } else if (bestKernel == 2) {
-            stringBuilder.append("normalized kernel\n");
-        } else {
-            stringBuilder.append("RBF kernel\n");
-        }
-        stringBuilder.append("\tCorrect: " + Double.toString(correct) + "\n");
-        return stringBuilder.toString();
-    }
-
-    public String getNowResults(double c, double kernelP, int kernelType, double correct) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Parametrs:\n");
+        stringBuilder.append("Parametrs for classifier:\n");
         stringBuilder.append("\tC: " + Double.toString(c) + "\n");
-        stringBuilder.append("\tKernel parametr: " + Double.toString(kernelP) + "\n");
+        stringBuilder.append("\tKernel parametr: " + Double.toString(param) + "\n");
         stringBuilder.append("\tKernel: ");
-        if (kernelType == 1) {
-            stringBuilder.append("polynomial kernel\n");
-        } else if (kernelType == 2) {
-            stringBuilder.append("normalized kernel\n");
-        } else {
-            stringBuilder.append("RBF kernel\n");
-        }
+        stringBuilder.append(MyKernel.getMyKernel(kernel).getName());
         stringBuilder.append("\tCorrect: " + Double.toString(correct) + "\n");
-        //stringBuilder.append("------------------------------------------------------\n");
         return stringBuilder.toString();
     }
 

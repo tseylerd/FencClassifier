@@ -16,6 +16,10 @@ public enum MyKernel {
             polyKernel.setExponent(param);
             return polyKernel;
         }
+        @Override
+        public String getName(){
+            return "poly kernel\n";
+        }
     },
     MY_NORM_KERNEL(2){
         @Override
@@ -23,6 +27,10 @@ public enum MyKernel {
             NormalizedPolyKernel normalizedPolyKernel = new NormalizedPolyKernel();
             normalizedPolyKernel.setExponent(param);
             return normalizedPolyKernel;
+        }
+        @Override
+        public String getName(){
+            return "normalzed poly kernel\n";
         }
     },
     MY_RBF_KERNEL(3){
@@ -32,6 +40,10 @@ public enum MyKernel {
             rbfKernel.setGamma(param);
             return rbfKernel;
         }
+        @Override
+        public String getName(){
+            return "RBF kernel\n";
+        }
     }
     ;
     private int number;
@@ -39,13 +51,15 @@ public enum MyKernel {
     private MyKernel(int number){
         this.number = number;
     }
-    public static Kernel getWekaKernel(int number, double param){
+
+    public static MyKernel getMyKernel(int number){
         for (MyKernel myKernel : MyKernel.values()) {
             if (myKernel.number == number){
-                return myKernel.getKernel(param);
+                return myKernel;
             }
         }
         return null;
     }
     public abstract Kernel getKernel(double param);
+    public abstract String getName();
 }
