@@ -1,6 +1,7 @@
 package ru.spbstu.neer2015.data;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 import static ru.spbstu.neer2015.data.GeneratorSetter.*;
 
@@ -8,62 +9,28 @@ public class Sportsmen {
     private String name;
     private double[] results;
     private int i;
-    private int place;
-    private double country;
+    private int yearsOld;
+    private SportsmenClass place;
+    private int country;
     private int rating;
     private int hand;
     private int countryRating;
-
-    public Sportsmen(String name, int place, double country) {
+    private final String DELIMITER = ",";
+    private final String STRING_END_OR_BEGIN = "'";
+    public Sportsmen(String name, int place, int country) {
         this.name = name;
         this.results = new double[dimensions];
         i = 0;
-        this.place = placeToClass(place);
+        this.place = SportsmenClass.getClass(place);
         this.country = country;
     }
 
     public Sportsmen(Sportsmen sportsmen) {
         name = sportsmen.name;
         results = new double[dimensions];
-        double[] oldVector = sportsmen.getResults();
-        for (int j = 0; j < dimensions; j++) {
-            results[j] = oldVector[j];
-        }
+        System.arraycopy(sportsmen.getResults(), 0, results, 0, dimensions);
         place = sportsmen.getPlace();
         i = dimensions;
-    }
-
-    private static int placeToClass(final int place) {
-        if (sayThatGood) {
-            if (place < 17) {
-                return 1;
-            } else {
-                return 2;
-            }
-        }
-        if (exponentClasses) {
-            if (place >= 1 && place < 5) {
-                return 1;
-            }
-            if (place > 4 && place < 9) {
-                return 2;
-            }
-            if (place > 8 && place < 17) {
-                return 3;
-            }
-            if (place > 16 && place < 33) {
-                return 4;
-            }
-            if (place > 32 && place < 65) {
-                return 5;
-            }
-            return 6;
-        } else {
-            int result = place / 4;
-            if (result > maxClasses)
-                result = maxClasses;
-            return result;
-        }
     }
 
     public void setCountryRating(int countryRating) {
@@ -75,30 +42,11 @@ public class Sportsmen {
     }
 
     public void setRating(int pos) {
-        this.rating = pos;
-    }
-
-    public void normalize() {
-        double sum = 0;
-        for (int j = 0; j < dimensions; j++) {
-            sum += results[j] * results[j];
-        }
-        sum = Math.sqrt(sum);
-        for (int j = 0; j < dimensions; j++) {
-            results[j] /= sum;
-        }
+        this.rating = pos*2;
     }
 
     public boolean ifFull() {
         return i == dimensions;
-    }
-
-    public void compareAndChangeClass(double place) {
-        if (this.place != place) {
-            this.place = -1;
-        } else {
-            this.place = 1;
-        }
     }
 
     public double[] getResults() {
@@ -119,12 +67,8 @@ public class Sportsmen {
         return name;
     }
 
-    public int getPlace() {
+    public SportsmenClass getPlace() {
         return place;
-    }
-
-    public void setPlace(int place) {
-        this.place = place;
     }
 
     public void pushResult(double result) {
@@ -134,97 +78,80 @@ public class Sportsmen {
         }
     }
 
-    public void setResults() {
-        results[0] /= dimensions;
+    public void setYearsOld(int yearsOld) {
+        this.yearsOld = yearsOld;
     }
 
-    public void setYearsOld(double yearsOld) {
-        results[i] = yearsOld;
-        ++i;
-    }
-
-    private void doThatResultsAreTrue() {
-        int r = 0;
-        int k = 0;
+    private double getMeanRealResult(){
+        double sum = 0;
+        double count = 0;
         for (int j = 0; j < dimensions; j++) {
             if (results[j] != defaultResult) {
-                r += results[j];
-                k++;
+                sum += results[j];
+                count++;
             }
         }
-        r /= k;
+        sum /= count;
+        return (sum);
+    }
+    private void setDefaultResultsAsMean(double mean){
         for (int j = 0; j < dimensions; j++) {
             if (results[j] == defaultResult) {
-                results[j] = r;
+                results[j] = mean;
             }
         }
-        double[] temp = new double[dimensions - 1];
-        for (int j = 1; j < dimensions; j++) {
-            temp[j - 1] = results[j];
-        }
-        Arrays.sort(temp);
-        for (int j = 1; j < dimensions; j++) {
-            results[j] = temp[j - 1];
-        }
     }
-
+    private void doThatResultsAreTrue() {
+        double mean = getMeanRealResult();
+        setDefaultResultsAsMean(mean);
+        Arrays.sort(results);
+    }
     public boolean checkCorrect() {
-        if (filterSmaller) {
-            int sum = 0;
-            for (int j = 1; j < dimensions; j++) {
-                sum += results[j];
-            }
-            sum /= (dimensions - 1);
-            if (placeToClass(sum) > place) {
-                return false;
-            }
-        }
-        return defaultsNumber() <= defaultsMax;
+        return defaultsNumber() <= defaultsMax && !isItEmmision();
     }
 
-    private double getMean() {
+    private boolean isItEmmision(){
+        if(filterSmaller){
+            double sum = getMeanRealResult();
+            if (Math.abs(SportsmenClass.getClass(sum).getSportsmenClass() - place.getSportsmenClass()) > 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private double getBestsMean() {
         double mid = 0;
-        for (int j = 1; j < numberBests + 1; j++) {
+        for (int j = 0; j < numberBests; j++) {
             mid += results[j];
         }
         mid = Math.pow(mid / numberBests, power);
         return mid;
     }
 
+    private void appendFactor(StringBuilder stringBuilder, Number whatToAppend){
+        stringBuilder.append(whatToAppend);
+        stringBuilder.append(DELIMITER);
+    }
+
+    private void appendName(StringBuilder stringBuilder, String name){
+        stringBuilder.append(STRING_END_OR_BEGIN);
+        stringBuilder.append(name);
+        stringBuilder.append(STRING_END_OR_BEGIN);
+        stringBuilder.append(DELIMITER);
+    }
+
     public String getText() {
         doThatResultsAreTrue();
-        String result = "";
-        result += "'" + name + "',";
-        if (mean) {
-            double mid = getMean();
-            result += Double.toString(results[0]);
-            result += ",";
-            result += Double.toString(mid);
-            result += ",";
-        } else if (bests) {
-            for (int j = 0; j < numberBests + 1; j++) {
-                result += Integer.toString((int) Math.pow(results[j], power)) + ",";
-            }
-        } else {
-            result += Integer.toString((int) Math.pow(results[0], power)) + ",";
-            for (int j = dimensions - 1; j > dimensions - numberBests - 1; j--) {
-                result += Integer.toString((int) Math.pow(results[j], power)) + ",";
-            }
-        }
-        if (addCountry) {
-            result += Double.toString(country) + ",";
-        }
-        if (addRating) {
-            result += Integer.toString(rating * 2) + ",";
-        }
-        if (addHand) {
-            result += Integer.toString(hand) + ",";
-        }
-        if (addCountryRating) {
-            result += Integer.toString(countryRating) + ",";
-        }
-        result += Integer.toString(place);
-        //result += "{" + Double.toString((double)(place)) + "}";
-        return result;
+        StringBuilder result = new StringBuilder();
+        double mid = getBestsMean();
+        appendName(result, name);
+        appendFactor(result, yearsOld);
+        appendFactor(result, mid);
+        appendFactor(result, country);
+        appendFactor(result, rating);
+        appendFactor(result, hand);
+        appendFactor(result, countryRating);
+        result.append(place.getSportsmenClass());
+        return result.toString();
     }
 }

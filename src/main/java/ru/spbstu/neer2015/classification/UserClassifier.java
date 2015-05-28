@@ -1,20 +1,13 @@
 package ru.spbstu.neer2015.classification;
 
-import ru.spbstu.neer2015.data.DataReader;
-import ru.spbstu.neer2015.data.GeneratorSetter;
-import ru.spbstu.neer2015.data.ParametrSelectionSetter;
+import ru.spbstu.neer2015.data.*;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.functions.supportVector.Kernel;
-import weka.classifiers.functions.supportVector.NormalizedPolyKernel;
-import weka.classifiers.functions.supportVector.PolyKernel;
-import weka.classifiers.functions.supportVector.RBFKernel;
 import weka.classifiers.meta.MultiBoostAB;
-import weka.core.Instance;
 import weka.core.Instances;
 import weka.filters.unsupervised.instance.Normalize;
 
-import javax.swing.*;
 import java.io.*;
 import java.util.Random;
 
@@ -24,7 +17,7 @@ import static ru.spbstu.neer2015.data.GeneratorSetter.modelPath;
  * Created by tseyler on 11.03.15.
  */
 public class UserClassifier {
-    private MultiBoostAB smo;
+    private MultiBoostAB multiBoostAB;
     private Instances train;
 
     public UserClassifier() throws Exception {
@@ -32,82 +25,42 @@ public class UserClassifier {
     }
 
     public static void main(String[] args) throws Exception {
-/*      Generator generator = new Generator();
+        Generator generator = new Generator();
         generator.generateTrainSet();
-        generator.saveSportsmens();*/
-        ParametrSelection parametrSelection = new ParametrSelection(new ParametrSelectionSetter(200, 300, 1, 1, 1, 1), false);
+        generator.saveSportsmens();
+        /*ParametrSelection parametrSelection = new ParametrSelection(new ParametrSelectionSetter(1, 500, 100, 0.01, 2, 0.5), false);
         parametrSelection.evaluate(new JProgressBar(), new JTextPane());
         System.out.print(parametrSelection.getStringResults());
-        UserClassifier classifier1 = parametrSelection.getBestClassifier();
+        UserClassifier classifier1 = parametrSelection.getBestClassifier();*/
+        UserClassifier classifier1 = new UserClassifier();
+        classifier1.buildClassifier(2, 1000, 2);
         classifier1.crossValidateToConsole();
     }
 
     public int classifySportsmen(int years, double mid, int country, int rating, int hand, int teamRating) throws Exception {
-        Instance instance = new Instance(7);
-        instance.setDataset(train);
-        instance.setValue(0, years);
-        instance.setValue(1, mid);
-        instance.setValue(2, country);
-        instance.setValue(3, rating);
-        instance.setValue(4, hand);
-        instance.setValue(5, teamRating);
-        instance.setClassMissing();
+        MyInstance instance = new MyInstance(train, 7, years, mid, country, rating, hand, teamRating);
         Normalize normalize = new Normalize();
         normalize.setInputFormat(train);
         normalize.input(instance);
-        instance = normalize.output();
-        int clazz = (int) smo.classifyInstance(instance);
+        instance = (MyInstance) normalize.output();
+        int clazz = (int) multiBoostAB.classifyInstance(instance);
         return clazz;
-    }
-
-    private Kernel getKernel(final int type, final double param) {
-        switch (type) {
-            case 1: {
-                PolyKernel polyKernel = new PolyKernel();
-                polyKernel.setExponent(param);
-                return polyKernel;
-            }
-            case 2: {
-                NormalizedPolyKernel normalizedPolyKernel = new NormalizedPolyKernel();
-                normalizedPolyKernel.setExponent(param);
-                return normalizedPolyKernel;
-            }
-            case 3: {
-                RBFKernel rbfKernel = new RBFKernel();
-                rbfKernel.setGamma(param);
-                return rbfKernel;
-            }
-            case 4: {
-                PolyKernel polyKernel = new PolyKernel();
-                return polyKernel;
-            }
-            case 5: {
-                NormalizedPolyKernel normalizedPolyKernel = new NormalizedPolyKernel();
-                return normalizedPolyKernel;
-            }
-            case 6: {
-                RBFKernel rbfKernel = new RBFKernel();
-                return rbfKernel;
-            }
-            default:
-                return new PolyKernel();
-        }
     }
 
     public void buildClassifier(final int kernelType, final int c, double param) throws Exception {
         SMO smo1 = new SMO();
-        Kernel kernel1 = getKernel(kernelType, param);
+        Kernel kernel1 = MyKernel.getWekaKernel(kernelType, param);
         smo1.setKernel(kernel1);
         smo1.setC(c);
-        smo = new MultiBoostAB();
-        smo.setClassifier(smo1);
-        smo.setNumSubCmtys(6);
-        smo.buildClassifier(train);
+        multiBoostAB = new MultiBoostAB();
+        multiBoostAB.setClassifier(smo1);
+        multiBoostAB.setNumSubCmtys(6);
+        multiBoostAB.buildClassifier(train);
     }
 
     public void saveModel() throws Exception {
         ObjectOutputStream modelOS = new ObjectOutputStream(new FileOutputStream(modelPath));
-        modelOS.writeObject(smo);
+        modelOS.writeObject(multiBoostAB);
         modelOS.flush();
         modelOS.close();
     }
@@ -115,19 +68,19 @@ public class UserClassifier {
     public void loadModel() throws Exception {
         FileInputStream fis = new FileInputStream(modelPath);
         ObjectInputStream ois = new ObjectInputStream(fis);
-        smo = (MultiBoostAB) ois.readObject();
+        multiBoostAB = (MultiBoostAB) ois.readObject();
         ois.close();
     }
 
     public void crossValidateToConsole() throws Exception {
         Evaluation evaluation = new Evaluation(train);
-        evaluation.crossValidateModel(smo, train, 10, new Random(1));
+        evaluation.crossValidateModel(multiBoostAB, train, 10, new Random(1));
         System.out.println(evaluation.toSummaryString());
     }
 
     public double getEstimator() throws Exception {
         Evaluation evaluation = new Evaluation(train);
-        evaluation.crossValidateModel(smo, train, 10, new Random(1));
+        evaluation.crossValidateModel(multiBoostAB, train, 10, new Random(1));
         return evaluation.pctCorrect();
     }
 
@@ -140,7 +93,7 @@ public class UserClassifier {
             unlabeled = weka.filters.Filter.useFilter(unlabeled, normalize);
         }
         for (int i = 0; i < unlabeled.numInstances(); i++) {
-            double clsLabel = smo.classifyInstance(unlabeled.instance(i));
+            double clsLabel = multiBoostAB.classifyInstance(unlabeled.instance(i));
             unlabeled.instance(i).setClassValue(clsLabel);
         }
         BufferedWriter writer = new BufferedWriter(

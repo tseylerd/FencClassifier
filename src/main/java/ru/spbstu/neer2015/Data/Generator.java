@@ -8,48 +8,48 @@ import static ru.spbstu.neer2015.data.GeneratorSetter.*;
 
 public class Generator {
     private ArrayList<Sportsmen> sportsmens;
-    private HashMap<String, Double> counties;
+    private HashMap<String, Integer> counties;
     private HashMap<String, Integer> hands;
 
     public Generator() throws IOException {
+        initCountries();
+        initHands();
+    }
+
+    private void initCountries() throws IOException{
         counties = new HashMap<>();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(countiesPath));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(countriesPath));
         String country;
         while ((country = bufferedReader.readLine()) != null) {
-            counties.put(country, (double) country.hashCode());
+            counties.put(country, country.hashCode());
         }
         bufferedReader.close();
-        if (addHand) {
-            bufferedReader = new BufferedReader(new FileReader(pathToHands));
-            String line;
-            hands = new HashMap<>();
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] arr = line.split("\t");
-                String name = arr[0];
-                int hand = Integer.parseInt(arr[1]);
-                hands.put(name, hand);
-            }
-        }
     }
-
-    private static int getClassesNumber() {
-        if (exponentClasses) {
-            return 6;
-        }
-        if (sayThatGood) {
-            return 2;
-        } else {
-            return 50;
-        }
-    }
-
-    public static String[] getCountries() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(countiesPath));
+    private void initHands() throws IOException{
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(pathToHands));
         String line;
-        ArrayList<String> cs = new ArrayList<>();
+        hands = new HashMap<>();
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] arr = line.split("\t");
+            String name = arr[0];
+            int hand = Integer.parseInt(arr[1]);
+            hands.put(name, hand);
+        }
+    }
+    private static int getClassesNumber() {
+        return 6;
+    }
+    private static List<String> formCountriesList() throws IOException{
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(countriesPath));
+        String line;
+        List<String> cs = new ArrayList<>();
         while ((line = bufferedReader.readLine()) != null) {
             cs.add(line);
         }
+        return cs;
+    }
+    public static String[] getCountries() throws IOException {
+        List<String> cs = formCountriesList();
         String[] result = new String[cs.size()];
         for (int i = 0; i < cs.size(); i++) {
             result[i] = cs.get(i);
@@ -90,17 +90,6 @@ public class Generator {
         return sportsmens;
     }
 
-    private ArrayList<Sportsmen> getFilteredSet(final double filteredClass) {
-        ArrayList<Sportsmen> filteredSet = new ArrayList<Sportsmen>();
-        for (Sportsmen sportsmen : sportsmens) {
-            filteredSet.add(new Sportsmen(sportsmen));
-        }
-        for (Sportsmen sportsmen : filteredSet) {
-            sportsmen.compareAndChangeClass(filteredClass);
-        }
-        return filteredSet;
-    }
-
     private void writeAttributes(BufferedWriter bufferedWriter) throws IOException {
         bufferedWriter.write("\n@attribute Name string\n");
         int start = 0;
@@ -118,25 +107,7 @@ public class Generator {
     }
 
     private int getLastAttribute() {
-        int result;
-        if (mean) {
-            result = 2;
-        } else {
-            result = numberBests + 1;
-        }
-        if (addCountry) {
-            result++;
-        }
-        if (addRating) {
-            result++;
-        }
-        if (addHand) {
-            result++;
-        }
-        if (addCountryRating) {
-            result++;
-        }
-        return result;
+        return 6;
     }
 
     private void writeHeader(BufferedWriter bufferedWriter) throws IOException {
@@ -157,20 +128,16 @@ public class Generator {
     }
 
     private int getYearsOld(final String date) {
-        if (yearsOld) {
             int day = Integer.parseInt(date.substring(0, 2));
             int month = Integer.parseInt(date.substring(3, 5));
             int year = Integer.parseInt("19" + date.substring(6, 8));
             GregorianCalendar birthday = new GregorianCalendar(year, month, day);
-            GregorianCalendar today = new GregorianCalendar(2015, 04, 27);
-            double years = today.get(GregorianCalendar.YEAR) - birthday.get(GregorianCalendar.YEAR);
+            Calendar today = Calendar.getInstance();
+            double years = today.get(Calendar.YEAR) - birthday.get(GregorianCalendar.YEAR);
             return (int) years;
-        } else {
-            return defaultYears;
-        }
     }
 
-    private double getNumberOfCountry(String country) {
+    private int getNumberOfCountry(String country) {
         return counties.get(country);
     }
 
@@ -201,28 +168,23 @@ public class Generator {
     }
 
     private void addFinalRating(Sportsmen sportsmen, HashMap<String, Integer> rat) {
-        if (addRating) {
             Integer pos = rat.get(sportsmen.getName());
             if (pos == null) {
-                pos = sportsmen.getPlace();
+                pos = sportsmen.getPlace().getSportsmenClass();
             }
             pos *= 10;
             sportsmen.setRating(pos);
-        }
     }
 
     private void addTeamRating(Sportsmen sportsmen, String country, HashMap<String, Integer> rat) {
-        if (addCountryRating) {
             Integer pos = rat.get(country);
             if (pos == null) {
-                pos = sportsmen.getPlace();
+                pos = sportsmen.getPlace().getSportsmenClass();
             }
             sportsmen.setCountryRating(pos);
-        }
     }
 
     private void addHand(Sportsmen sportsmen) {
-        if (addHand) {
             Integer hand = hands.get(sportsmen.getName());
             if (hand == null) {
                 hand = (leftSel + rightSel) / 2;
@@ -230,7 +192,6 @@ public class Generator {
                 hand = hand == 1 ? leftSel : rightSel;
             }
             sportsmen.setHand(hand);
-        }
     }
 
     private void extractFromFolder(final String folder) throws ParseException, IOException {
@@ -253,14 +214,14 @@ public class Generator {
             hashMap.put(name, sportsmen);
         }
         for (int i = 1; i < competitionsNumber; i++) {
-            addResults(hashMap, pathToFolder + Integer.toString(i), folder);
+            addResults(hashMap, pathToFolder + Integer.toString(i));
         }
         for (Sportsmen sportsmen : hashMap.values()) {
             sportsmens.add(sportsmen);
         }
     }
 
-    private void addResults(final HashMap<String, Sportsmen> hashMap, final String path, final String folder) throws FileNotFoundException {
+    private void addResults(final HashMap<String, Sportsmen> hashMap, final String path) throws FileNotFoundException {
         Scanner scanner = new Scanner(new FileReader(path));
         HashSet<String> hashSet = new HashSet<String>();
         while (scanner.hasNext()) {
