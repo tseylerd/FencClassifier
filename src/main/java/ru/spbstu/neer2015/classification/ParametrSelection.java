@@ -9,7 +9,7 @@ public class ParametrSelection {
     private final boolean paramSet;
     private int bestKernel;
     private double bestParam;
-    private double bestC;
+    private int bestC;
     private double correct;
 
     public ParametrSelection(ParametrSelectionSetter setter, boolean paramSet) {
@@ -52,7 +52,7 @@ public class ParametrSelection {
                         correct = estimator;
                         bestKernel = i;
                         bestParam = kernelParamGrid[k];
-                        bestC = cParamGrid[j];
+                        bestC = (int)cParamGrid[j];
                     }
                     progressBar.setValue(progressBar.getValue() + 1);
                 }
@@ -63,7 +63,7 @@ public class ParametrSelection {
 
     public UserClassifier getBestClassifier() throws Exception {
         UserClassifier classifier = new UserClassifier();
-        classifier.buildClassifier(bestKernel, (int) bestC, bestParam);
+        classifier.buildClassifier(bestKernel, bestC, bestParam);
         return classifier;
     }
 
@@ -76,6 +76,9 @@ public class ParametrSelection {
         stringBuilder.append(MyKernel.getMyKernel(kernel).getName());
         stringBuilder.append("\tCorrect: " + Double.toString(correct) + "\n");
         return stringBuilder.toString();
+    }
+    public String getStringResults() {
+        return getStringResults(bestC, bestParam, bestKernel, correct);
     }
 
     private double[] getGrid(double start, double step, double end) {

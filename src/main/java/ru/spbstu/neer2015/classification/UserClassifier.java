@@ -33,7 +33,7 @@ public class UserClassifier {
         System.out.print(parametrSelection.getStringResults());
         UserClassifier classifier1 = parametrSelection.getBestClassifier();*/
         UserClassifier classifier1 = new UserClassifier();
-        classifier1.buildClassifier(2, 500, 3);
+        classifier1.buildClassifier(2, 500, 4);
         classifier1.crossValidateToConsole();
     }
 
