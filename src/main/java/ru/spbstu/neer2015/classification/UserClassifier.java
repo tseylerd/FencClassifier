@@ -102,8 +102,5 @@ public class UserClassifier {
         writer.newLine();
         writer.close();
     }
-
-    public void finalize() {
-        train.delete();
-    }
+    
 }
