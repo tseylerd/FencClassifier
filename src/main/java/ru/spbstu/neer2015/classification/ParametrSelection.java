@@ -47,12 +47,12 @@ public class ParametrSelection {
                     UserClassifier classifier = new UserClassifier();
                     classifier.buildClassifier(i, (int) cParamGrid[j], kernelParamGrid[k]);
                     double estimator = classifier.getEstimator();
-                    label.setText(getStringResults((int)cParamGrid[j], kernelParamGrid[k], i, estimator));
+                    label.setText(getStringResults((int) cParamGrid[j], kernelParamGrid[k], i, estimator));
                     if (estimator > correct) {
                         correct = estimator;
                         bestKernel = i;
                         bestParam = kernelParamGrid[k];
-                        bestC = (int)cParamGrid[j];
+                        bestC = (int) cParamGrid[j];
                     }
                     progressBar.setValue(progressBar.getValue() + 1);
                 }
@@ -77,6 +77,7 @@ public class ParametrSelection {
         stringBuilder.append("\tCorrect: " + Double.toString(correct) + "\n");
         return stringBuilder.toString();
     }
+
     public String getStringResults() {
         return getStringResults(bestC, bestParam, bestKernel, correct);
     }

@@ -1,6 +1,9 @@
 package ru.spbstu.neer2015.classification;
 
-import ru.spbstu.neer2015.data.*;
+import ru.spbstu.neer2015.data.DataReader;
+import ru.spbstu.neer2015.data.Generator;
+import ru.spbstu.neer2015.data.GeneratorSetter;
+import ru.spbstu.neer2015.data.MyInstance;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.functions.supportVector.Kernel;
@@ -11,7 +14,7 @@ import weka.filters.unsupervised.instance.Normalize;
 import java.io.*;
 import java.util.Random;
 
-import static ru.spbstu.neer2015.data.GeneratorSetter.modelPath;
+import static ru.spbstu.neer2015.data.GeneratorSetter.MODEL_PATH;
 
 /**
  * Created by tseyler on 11.03.15.
@@ -59,14 +62,14 @@ public class UserClassifier {
     }
 
     public void saveModel() throws Exception {
-        ObjectOutputStream modelOS = new ObjectOutputStream(new FileOutputStream(modelPath));
+        ObjectOutputStream modelOS = new ObjectOutputStream(new FileOutputStream(MODEL_PATH));
         modelOS.writeObject(multiBoostAB);
         modelOS.flush();
         modelOS.close();
     }
 
     public void loadModel() throws Exception {
-        FileInputStream fis = new FileInputStream(modelPath);
+        FileInputStream fis = new FileInputStream(MODEL_PATH);
         ObjectInputStream ois = new ObjectInputStream(fis);
         multiBoostAB = (MultiBoostAB) ois.readObject();
         ois.close();
@@ -88,7 +91,7 @@ public class UserClassifier {
         Instances unlabeled = new Instances(
                 new BufferedReader(
                         new FileReader(path)));
-        if (GeneratorSetter.normalize) {
+        if (GeneratorSetter.NORMALIZE) {
             Normalize normalize = new Normalize();
             unlabeled = weka.filters.Filter.useFilter(unlabeled, normalize);
         }
@@ -102,5 +105,5 @@ public class UserClassifier {
         writer.newLine();
         writer.close();
     }
-    
+
 }

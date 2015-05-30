@@ -8,8 +8,8 @@ import ru.spbstu.neer2015.data.SportsmenClass;
 import javax.swing.*;
 import java.util.ArrayList;
 
-import static ru.spbstu.neer2015.data.GeneratorSetter.leftSel;
-import static ru.spbstu.neer2015.data.GeneratorSetter.rightSel;
+import static ru.spbstu.neer2015.data.GeneratorSetter.LEFT_SEL;
+import static ru.spbstu.neer2015.data.GeneratorSetter.RIGHT_SEL;
 
 /**
  * Created by tseyler on 19.05.15.
@@ -23,7 +23,7 @@ public class Controller {
         double mean = getMeanResult(competitions);
         int indRating = Integer.parseInt(individualRating);
         int cRating = (Integer.parseInt(teamRating));
-        int handVal = hand ? leftSel : rightSel;
+        int handVal = hand ? LEFT_SEL : RIGHT_SEL;
         int countryVal = country.hashCode();
         int clazz = classifier.classifySportsmen(yearsOld, mean, countryVal, indRating, handVal, cRating) + 1;
         return "Вероятнее всего, спортсмен займет место " + SportsmenClass.getInstanceByClass(clazz).getText();

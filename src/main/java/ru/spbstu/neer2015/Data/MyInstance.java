@@ -6,8 +6,8 @@ import weka.core.Instances;
 /**
  * Created by tseyler on 28.05.15.
  */
-public class MyInstance extends Instance{
-    public MyInstance(Instances dataSet, int count, int years, double mid, int country, int rating, int hand, int teamRating){
+public class MyInstance extends Instance {
+    public MyInstance(Instances dataSet, int count, int years, double mid, int country, int rating, int hand, int teamRating) {
         super(count);
         setDataset(dataSet);
         setValue(0, years);

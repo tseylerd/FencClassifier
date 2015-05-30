@@ -1,11 +1,12 @@
 package ru.spbstu.neer2015.data;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 import static ru.spbstu.neer2015.data.GeneratorSetter.*;
 
 public class Sportsmen {
+    private final String DELIMITER = ",";
+    private final String STRING_END_OR_BEGIN = "'";
     private String name;
     private double[] results;
     private int i;
@@ -15,11 +16,10 @@ public class Sportsmen {
     private int rating;
     private int hand;
     private int countryRating;
-    private final String DELIMITER = ",";
-    private final String STRING_END_OR_BEGIN = "'";
+
     public Sportsmen(String name, int place, int country) {
         this.name = name;
-        this.results = new double[dimensions];
+        this.results = new double[DIMENSIONS];
         i = 0;
         this.place = SportsmenClass.getClass(place);
         this.country = country;
@@ -27,10 +27,10 @@ public class Sportsmen {
 
     public Sportsmen(Sportsmen sportsmen) {
         name = sportsmen.name;
-        results = new double[dimensions];
-        System.arraycopy(sportsmen.getResults(), 0, results, 0, dimensions);
+        results = new double[DIMENSIONS];
+        System.arraycopy(sportsmen.getResults(), 0, results, 0, DIMENSIONS);
         place = sportsmen.getPlace();
-        i = dimensions;
+        i = DIMENSIONS;
     }
 
     public void setCountryRating(int countryRating) {
@@ -42,11 +42,11 @@ public class Sportsmen {
     }
 
     public void setRating(int pos) {
-        this.rating = pos*2;
+        this.rating = pos * 2;
     }
 
     public boolean ifFull() {
-        return i == dimensions;
+        return i == DIMENSIONS;
     }
 
     public double[] getResults() {
@@ -55,8 +55,8 @@ public class Sportsmen {
 
     public int defaultsNumber() {
         int c = 0;
-        for (int j = 0; j < dimensions; j++) {
-            if (results[j] == defaultResult) {
+        for (int j = 0; j < DIMENSIONS; j++) {
+            if (results[j] == DEFAULT_RESULT) {
                 c++;
             }
         }
@@ -82,11 +82,11 @@ public class Sportsmen {
         this.yearsOld = yearsOld;
     }
 
-    private double getMeanRealResult(){
+    private double getMeanRealResult() {
         double sum = 0;
         double count = 0;
-        for (int j = 0; j < dimensions; j++) {
-            if (results[j] != defaultResult) {
+        for (int j = 0; j < DIMENSIONS; j++) {
+            if (results[j] != DEFAULT_RESULT) {
                 sum += results[j];
                 count++;
             }
@@ -94,24 +94,27 @@ public class Sportsmen {
         sum /= count;
         return (sum);
     }
-    private void setDefaultResultsAsMean(double mean){
-        for (int j = 0; j < dimensions; j++) {
-            if (results[j] == defaultResult) {
+
+    private void setDefaultResultsAsMean(double mean) {
+        for (int j = 0; j < DIMENSIONS; j++) {
+            if (results[j] == DEFAULT_RESULT) {
                 results[j] = mean;
             }
         }
     }
+
     private void doThatResultsAreTrue() {
         double mean = getMeanRealResult();
         setDefaultResultsAsMean(mean);
         Arrays.sort(results);
     }
+
     public boolean checkCorrect() {
-        return defaultsNumber() <= defaultsMax && !isItEmmision();
+        return defaultsNumber() <= DEFAULTS_MAX && !isItEmmision();
     }
 
-    private boolean isItEmmision(){
-        if(filterSmaller){
+    private boolean isItEmmision() {
+        if (FILTER_SMALLER) {
             double sum = getMeanRealResult();
             if (Math.abs(SportsmenClass.getClass(sum).getSportsmenClass() - place.getSportsmenClass()) > 2) {
                 return true;
@@ -119,21 +122,22 @@ public class Sportsmen {
         }
         return false;
     }
+
     private double getBestsMean() {
         double mid = 0;
-        for (int j = 0; j < numberBests; j++) {
+        for (int j = 0; j < NUMBER_BESTS; j++) {
             mid += results[j];
         }
-        mid = Math.pow(mid / numberBests, power);
+        mid = Math.pow(mid / NUMBER_BESTS, POWER);
         return mid;
     }
 
-    private void appendFactor(StringBuilder stringBuilder, Number whatToAppend){
+    private void appendFactor(StringBuilder stringBuilder, Number whatToAppend) {
         stringBuilder.append(whatToAppend);
         stringBuilder.append(DELIMITER);
     }
 
-    private void appendName(StringBuilder stringBuilder, String name){
+    private void appendName(StringBuilder stringBuilder, String name) {
         stringBuilder.append(STRING_END_OR_BEGIN);
         stringBuilder.append(name);
         stringBuilder.append(STRING_END_OR_BEGIN);
